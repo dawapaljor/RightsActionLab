@@ -11,11 +11,10 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.3",
-    "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/react": "^6.0.0",
+    "@astrojs/tailwind": "^7.0.0",
     "@google/genai": "^1.29.0",
-    "@tailwindcss/vite": "^4.1.14",
-    "@vitejs/plugin-react": "^5.0.4",
+    "@tailwindcss/vite": "^4.0.0",
     "astro": "^6.1.6",
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
