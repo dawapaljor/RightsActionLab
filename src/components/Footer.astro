@@ -1,0 +1,59 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-[#002147] text-white pt-20 pb-10 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+    <div class="space-y-6">
+      <h3 class="text-2xl font-serif font-bold tracking-tight">RIGHTS ACTION LAB</h3>
+      <p class="text-white/60 text-sm leading-relaxed max-w-xs">
+        Training, research and technology to advance human rights and digital security in repressive environments.
+      </p>
+      <div class="pt-4">
+        <p class="text-xs uppercase tracking-widest text-[#c5a059] font-bold">Tax ID 46-4078393</p>
+        <p class="text-xs text-white/40 mt-1">Nonprofit 501(c)(3) charitable organization</p>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="text-xs uppercase tracking-[0.2em] font-bold mb-8 text-[#c5a059]">Current Projects</h4>
+      <ul class="space-y-4 text-sm font-medium">
+        <li><a href="/projects/tibet-action-institute" class="hover:text-[#c5a059] transition-colors">Tibet Action Institute</a></li>
+        <li><a href="/projects/guardian-project" class="hover:text-[#c5a059] transition-colors">Guardian Project</a></li>
+        <li><a href="/projects/tibcert" class="hover:text-[#c5a059] transition-colors">TIBCERT</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-xs uppercase tracking-[0.2em] font-bold mb-8 text-[#c5a059]">About Us</h4>
+      <ul class="space-y-4 text-sm font-medium">
+        <li><a href="/about" class="hover:text-[#c5a059] transition-colors">Our Mission</a></li>
+        <li><a href="/about/executive-team" class="hover:text-[#c5a059] transition-colors">Executive Team</a></li>
+        <li><a href="/about/board-of-directors" class="hover:text-[#c5a059] transition-colors">Board of Directors</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-xs uppercase tracking-[0.2em] font-bold mb-8 text-[#c5a059]">Newsletter</h4>
+      <p class="text-sm text-white/60 mb-6">Stay informed about our latest research and technology developments.</p>
+      <form class="flex flex-col gap-3">
+        <input 
+          type="email" 
+          placeholder="Email Address" 
+          class="bg-white/5 border border-white/10 px-4 py-3 text-sm focus:outline-none focus:border-[#c5a059] transition-colors"
+        />
+        <button class="bg-[#c5a059] text-[#002147] py-3 text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors">
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-white/40 font-bold">
+    <p>&copy; {currentYear} Rights Action Lab. All Rights Reserved.</p>
+    <div class="flex gap-8">
+      <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+      <a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
+    </div>
+  </div>
+</footer>

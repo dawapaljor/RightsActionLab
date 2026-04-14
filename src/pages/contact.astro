@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Mail, MapPin, Phone, MessageSquare } from 'lucide-react';
+---
+
+<Layout title="Contact Us" description="Get in touch with Rights Action Lab.">
+  <section class="bg-[#002147] text-white py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">Get in Touch</h1>
+      <p class="text-xl text-white/70 leading-relaxed font-medium max-w-2xl">
+        Have questions about our work or want to collaborate? We'd love to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
+      <div class="lg:col-span-2">
+        <form class="space-y-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-2">
+              <label class="text-xs uppercase tracking-widest font-bold text-[#002147]">Full Name</label>
+              <input type="text" class="w-full border-b-2 border-[#002147]/10 py-4 focus:outline-none focus:border-[#c5a059] transition-colors" />
+            </div>
+            <div class="space-y-2">
+              <label class="text-xs uppercase tracking-widest font-bold text-[#002147]">Email Address</label>
+              <input type="email" class="w-full border-b-2 border-[#002147]/10 py-4 focus:outline-none focus:border-[#c5a059] transition-colors" />
+            </div>
+          </div>
+          <div class="space-y-2">
+            <label class="text-xs uppercase tracking-widest font-bold text-[#002147]">Subject</label>
+            <select class="w-full border-b-2 border-[#002147]/10 py-4 focus:outline-none focus:border-[#c5a059] transition-colors bg-transparent">
+              <option>General Inquiry</option>
+              <option>Project Collaboration</option>
+              <option>Media Request</option>
+              <option>Donation Question</option>
+            </select>
+          </div>
+          <div class="space-y-2">
+            <label class="text-xs uppercase tracking-widest font-bold text-[#002147]">Message</label>
+            <textarea rows="6" class="w-full border-b-2 border-[#002147]/10 py-4 focus:outline-none focus:border-[#c5a059] transition-colors resize-none"></textarea>
+          </div>
+          <button class="bg-[#002147] text-white px-12 py-5 font-bold uppercase tracking-widest hover:bg-[#c5a059] transition-all duration-300 shadow-xl">
+            Send Message
+          </button>
+        </form>
+      </div>
+
+      <div class="space-y-12">
+        <div>
+          <h3 class="text-xs uppercase tracking-[0.2em] font-bold text-[#c5a059] mb-6">Contact Information</h3>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <Mail className="text-[#002147]" size={20} />
+              <div>
+                <p class="text-sm font-bold text-[#002147]">Email</p>
+                <p class="text-sm text-[#002147]/60">info@rightsactionlab.org</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <MapPin className="text-[#002147]" size={20} />
+              <div>
+                <p class="text-sm font-bold text-[#002147]">Location</p>
+                <p class="text-sm text-[#002147]/60">Massachusetts, USA</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-8 bg-[#f5f2ed] classic-border">
+          <h4 class="text-lg font-serif font-bold text-[#002147] mb-4">Secure Communication</h4>
+          <p class="text-sm text-[#002147]/70 leading-relaxed mb-6">
+            For sensitive inquiries, we recommend using encrypted communication channels. Contact us for our PGP key or Signal information.
+          </p>
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#002147]">
+            <MessageSquare size={16} /> Secure Contact
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

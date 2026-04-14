@@ -1,0 +1,86 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ShieldAlert, Globe, MessageSquare, Search } from 'lucide-react';
+
+const initiatives = [
+  {
+    title: "China Index",
+    description: "The first cross-regional project to objectively measure and visualize the People‘s Republic of China (PRC)‘s overseas influence through comparable data.",
+    icon: Globe
+  },
+  {
+    title: "Tibet's Voice in Cyber Security",
+    description: "Positioning Tibet on the global cybersecurity stage, highlighting China's censorship and surveillance in Tibet and transnational digital repression.",
+    icon: MessageSquare
+  },
+  {
+    title: "TibCERT Response Hub",
+    description: "A volunteer-based community platform built on the structure of Learn, Share, Network and Support to counter cyber attacks.",
+    icon: ShieldAlert
+  }
+];
+---
+
+<Layout title="TIBCERT" description="Supporting and strengthening community platforms for digital security.">
+  <!-- Hero -->
+  <section class="bg-[#002147] text-white py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <span class="text-[#c5a059] text-sm font-bold uppercase tracking-[0.3em] mb-6 block">Current Project</span>
+        <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">TIBCERT</h1>
+        <p class="text-xl text-white/70 leading-relaxed font-medium">
+          The Tibetan Computer Emergency Response Team (TibCERT) counters cyber attacks from powerful threat actors, serving as a model for impacted communities worldwide.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Initiatives -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        {initiatives.map((item) => (
+          <div class="flex flex-col gap-8 p-10 bg-[#f5f2ed] classic-shadow border-t-4 border-[#002147]">
+            <div class="text-[#002147]">
+              <item.icon size={48} strokeWidth={1.5} />
+            </div>
+            <h3 class="text-3xl font-serif font-bold text-[#002147]">{item.title}</h3>
+            <p class="text-[#002147]/70 leading-relaxed font-medium">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Content -->
+  <section class="py-24 px-6 bg-[#002147] text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div class="relative">
+        <div class="absolute inset-0 bg-[#c5a059] opacity-10 blur-3xl rounded-full"></div>
+        <img 
+          src="https://picsum.photos/seed/cybersecurity/800/600" 
+          alt="Cyber Security" 
+          class="relative z-10 w-full h-auto classic-shadow grayscale hover:grayscale-0 transition-all duration-700"
+          referrerpolicy="no-referrer"
+        />
+      </div>
+      <div class="space-y-8">
+        <h2 class="text-4xl md:text-5xl font-serif font-bold">Countering Transnational Repression</h2>
+        <p class="text-lg text-white/70 leading-relaxed font-medium">
+          TibCERT effectively counters sophisticated cyber attacks, providing ground-breaking models for digital defense. Our work highlights the regime’s digital repression of the diaspora and strengthens community resilience.
+        </p>
+        <div class="pt-6">
+          <div class="flex items-center gap-4 p-6 bg-white/5 border border-white/10">
+            <Search className="text-[#c5a059]" />
+            <div>
+              <p class="text-sm font-bold uppercase tracking-widest text-[#c5a059]">Wired UK Innovators</p>
+              <p class="text-xs text-white/50">Recognized among 32 innovators building a better future.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

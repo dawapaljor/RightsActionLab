@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ArrowRight, Shield, BookOpen, Users, Cpu } from 'lucide-react';
+
+const pillars = [
+  {
+    title: "Education And Outreach",
+    description: "Carry out educational programs on internet freedom, digital security, and strategies of nonviolent advocacy for Tibetans and other communities facing extreme repression.",
+    icon: Users
+  },
+  {
+    title: "Training",
+    description: "Provide in-depth training in digital security, civil society organizing, strategic advocacy, and application of nonviolent strategies to catalyze positive change.",
+    icon: Shield
+  },
+  {
+    title: "Research",
+    description: "Evidence-based research in multiple languages using sound methodologies and secure practices. Our research drives high-impact campaigns.",
+    icon: BookOpen
+  },
+  {
+    title: "Technology Development",
+    description: "Develop, test, distribute and promote new software that enables secure, private communications for activists, journalists, and rights defenders.",
+    icon: Cpu
+  }
+];
+
+const projects = [
+  {
+    name: "Tibet Action Institute",
+    description: "Combining innovative technology and nonviolent strategies to address rights abuses in Tibet.",
+    image: "https://picsum.photos/seed/tibet/800/600",
+    href: "/projects/tibet-action-institute"
+  },
+  {
+    name: "Guardian Project",
+    description: "Secure communications, information sharing tools and platforms developed through Rights Action Lab.",
+    image: "https://picsum.photos/seed/security/800/600",
+    href: "/projects/guardian-project"
+  },
+  {
+    name: "TIBCERT",
+    description: "Supporting and strengthening community platforms for digital security and incident response.",
+    image: "https://picsum.photos/seed/cyber/800/600",
+    href: "/projects/tibcert"
+  }
+];
+---
+
+<Layout title="Home">
+  <!-- Hero Section -->
+  <section class="relative h-[80vh] min-h-[600px] flex items-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://picsum.photos/seed/rights/1920/1080?blur=2" 
+        alt="Rights Action Lab" 
+        class="w-full h-full object-cover"
+        referrerpolicy="no-referrer"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-[#002147]/90 via-[#002147]/70 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+      <div class="max-w-2xl">
+        <span class="text-[#c5a059] text-sm font-bold uppercase tracking-[0.3em] mb-6 block">Rights Action Lab</span>
+        <h1 class="text-5xl md:text-7xl font-serif font-bold text-white leading-[1.1] mb-8">
+          Advancing Human Rights in Repressive Environments
+        </h1>
+        <p class="text-xl text-white/80 font-medium leading-relaxed mb-12 max-w-xl">
+          We provide training, research, and technology to empower activists and communities facing extreme repression and human rights abuses.
+        </p>
+        <div class="flex flex-wrap gap-6">
+          <a href="/about" class="bg-[#c5a059] text-[#002147] px-8 py-4 font-bold uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-xl">
+            Our Mission
+          </a>
+          <a href="/projects" class="border-2 border-white/30 text-white px-8 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-[#002147] transition-all duration-300">
+            View Projects
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Statement -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-5xl font-serif font-bold text-[#002147] mb-8">
+        Rights Action Lab is a nonprofit 501(c)(3) charitable organization dedicated to human rights and digital security.
+      </h2>
+      <div class="w-24 h-1 bg-[#c5a059] mx-auto mb-12"></div>
+      <p class="text-xl text-[#002147]/70 leading-relaxed font-medium">
+        We facilitate linkages and support programs that provide education and training, research and advocacy, technology development and digital security outreach.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pillars -->
+  <section class="py-24 px-6 bg-[#f5f2ed]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {pillars.map((pillar) => (
+          <div class="bg-white p-10 classic-border classic-shadow hover:-translate-y-2 transition-transform duration-300 group">
+            <div class="w-16 h-16 bg-[#002147]/5 flex items-center justify-center mb-8 group-hover:bg-[#002147] transition-colors duration-300">
+              <pillar.icon size={32} className="text-[#002147] group-hover:text-white transition-colors duration-300" />
+            </div>
+            <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4">{pillar.title}</h3>
+            <p class="text-[#002147]/60 text-sm leading-relaxed font-medium">
+              {pillar.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Preview -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex justify-between items-end mb-16">
+        <div>
+          <span class="text-[#c5a059] text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Our Work</span>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-[#002147]">Current Projects</h2>
+        </div>
+        <a href="/projects" class="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#002147] hover:text-[#c5a059] transition-colors">
+          View All Projects <ArrowRight size={16} />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        {projects.map((project) => (
+          <a href={project.href} class="group block">
+            <div class="relative aspect-[4/3] overflow-hidden mb-8">
+              <img 
+                src={project.image} 
+                alt={project.name} 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                referrerpolicy="no-referrer"
+              />
+              <div class="absolute inset-0 bg-[#002147]/20 group-hover:bg-transparent transition-colors duration-500"></div>
+            </div>
+            <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4 group-hover:text-[#c5a059] transition-colors">{project.name}</h3>
+            <p class="text-[#002147]/60 text-sm leading-relaxed font-medium mb-6">
+              {project.description}
+            </p>
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#002147]">
+              Learn More <ArrowRight size={14} />
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 px-6 bg-[#002147] text-white relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-[#c5a059]/10 skew-x-12 translate-x-1/2"></div>
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <h2 class="text-4xl md:text-6xl font-serif font-bold mb-8">Support Human Rights & Digital Freedom</h2>
+      <p class="text-xl text-white/70 mb-12 max-w-2xl mx-auto font-medium">
+        Your contribution directly supports the development of secure tools and strategic training for those on the frontlines of human rights advocacy.
+      </p>
+      <a href="/donate" class="inline-block bg-[#c5a059] text-[#002147] px-12 py-5 font-bold uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-2xl">
+        Make a Donation
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Shield, Lock, Smartphone, Wifi, Share2, EyeOff } from 'lucide-react';
+
+const tools = [
+  {
+    name: "Keanu Engine",
+    description: "Offers app and web experiences that enable safe and secure communication among communities.",
+    icon: Shield
+  },
+  {
+    name: "Butter Box Offline App Store",
+    description: "Broadcasts its own WiFi network to share apps and join public or private chatrooms without internet.",
+    icon: Wifi
+  },
+  {
+    name: "ProofMode",
+    description: "Capture, share, and preserve verifiable photos and videos with cryptographic proof.",
+    icon: Lock
+  },
+  {
+    name: "Circulo",
+    description: "Connect to a reliable network of six peers. Establish protocols, send alerts and keep your circle informed.",
+    icon: Share2
+  },
+  {
+    name: "LetsConvene",
+    description: "An easy-to-use, ephemeral, and privacy-preserving communications and information sharing tool.",
+    icon: EyeOff
+  }
+];
+---
+
+<Layout title="Guardian Project" description="Secure communications, information sharing tools and platforms developed through Rights Action Lab.">
+  <!-- Hero -->
+  <section class="bg-[#002147] text-white py-32 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="max-w-3xl">
+        <span class="text-[#c5a059] text-sm font-bold uppercase tracking-[0.3em] mb-6 block">Current Project</span>
+        <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">Guardian Project</h1>
+        <p class="text-xl text-white/70 leading-relaxed font-medium">
+          An award-winning, open-source mobile security collaborative developing tools for activists, journalists, and humanitarian workers worldwide.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Grid -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <h2 class="text-4xl font-serif font-bold text-[#002147] mb-6">Secure Technology for Human Rights</h2>
+        <p class="text-lg text-[#002147]/60 font-medium">
+          We develop, test, and distribute software that enables secure, private communications in the most challenging environments.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {tools.map((tool) => (
+          <div class="p-10 border border-[#002147]/10 hover:border-[#c5a059] transition-all duration-300 group bg-[#f5f2ed]/30">
+            <div class="w-14 h-14 bg-[#002147] text-white flex items-center justify-center mb-8 group-hover:bg-[#c5a059] transition-colors duration-300">
+              <tool.icon size={28} />
+            </div>
+            <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4">{tool.name}</h3>
+            <p class="text-[#002147]/70 text-sm leading-relaxed font-medium">
+              {tool.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured App -->
+  <section class="py-24 px-6 bg-[#002147] text-white">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+      <div class="flex-1 space-y-8">
+        <span class="text-[#c5a059] text-xs font-bold uppercase tracking-[0.3em]">Flagship Application</span>
+        <h2 class="text-4xl md:text-5xl font-serif font-bold">Orbot: Tor for Android</h2>
+        <p class="text-lg text-white/70 leading-relaxed font-medium">
+          Orbot is a free proxy app that empowers other apps to use the internet more securely. Orbot uses Tor to encrypt your Internet traffic and then hides it by bouncing through a series of computers around the world.
+        </p>
+        <div class="flex gap-8 py-4">
+          <div class="text-center">
+            <p class="text-3xl font-serif font-bold text-[#c5a059]">20M+</p>
+            <p class="text-[10px] uppercase tracking-widest font-bold opacity-50">Downloads</p>
+          </div>
+          <div class="text-center">
+            <p class="text-3xl font-serif font-bold text-[#c5a059]">Open</p>
+            <p class="text-[10px] uppercase tracking-widest font-bold opacity-50">Source</p>
+          </div>
+          <div class="text-center">
+            <p class="text-3xl font-serif font-bold text-[#c5a059]">Global</p>
+            <p class="text-[10px] uppercase tracking-widest font-bold opacity-50">Impact</p>
+          </div>
+        </div>
+        <a href="https://guardianproject.info" class="inline-block border-2 border-[#c5a059] text-[#c5a059] px-8 py-4 font-bold uppercase tracking-widest hover:bg-[#c5a059] hover:text-[#002147] transition-all duration-300">
+          Visit Guardian Project
+        </a>
+      </div>
+      <div class="flex-1">
+        <div class="relative">
+          <div class="absolute -inset-4 border border-[#c5a059]/20 translate-x-4 translate-y-4"></div>
+          <img 
+            src="https://picsum.photos/seed/mobile/800/1000" 
+            alt="Orbot App" 
+            class="relative z-10 w-full h-auto classic-shadow"
+            referrerpolicy="no-referrer"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

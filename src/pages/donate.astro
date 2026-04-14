@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Heart, Shield, Globe, Zap } from 'lucide-react';
+
+const options = [
+  { amount: "$50", description: "Supports digital security training for one activist." },
+  { amount: "$100", description: "Contributes to the development of secure communication tools." },
+  { amount: "$250", description: "Funds research into human rights abuses in repressive regions." },
+  { amount: "$500", description: "Sponsors a community-led digital defense initiative." }
+];
+---
+
+<Layout title="Support Our Work" description="Donate to Rights Action Lab and help us advance human rights and digital security.">
+  <section class="bg-[#002147] text-white py-32 px-6">
+    <div class="max-w-7xl mx-auto text-center">
+      <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">Support Our Work</h1>
+      <p class="text-xl text-white/70 leading-relaxed font-medium max-w-2xl mx-auto">
+        Your contribution empowers those on the frontlines of human rights advocacy with the tools and training they need to stay safe and effective.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
+      <div class="space-y-12">
+        <h2 class="text-4xl font-serif font-bold text-[#002147]">Why Give?</h2>
+        <div class="space-y-8">
+          <div class="flex gap-6">
+            <div class="w-12 h-12 bg-[#f5f2ed] flex items-center justify-center shrink-0 text-[#002147]">
+              <Shield size={24} />
+            </div>
+            <div>
+              <h3 class="text-xl font-serif font-bold text-[#002147] mb-2">Protect Activists</h3>
+              <p class="text-[#002147]/70 font-medium">We provide the digital armor needed to withstand surveillance and censorship.</p>
+            </div>
+          </div>
+          <div class="flex gap-6">
+            <div class="w-12 h-12 bg-[#f5f2ed] flex items-center justify-center shrink-0 text-[#002147]">
+              <Globe size={24} />
+            </div>
+            <div>
+              <h3 class="text-xl font-serif font-bold text-[#002147] mb-2">Global Impact</h3>
+              <p class="text-[#002147]/70 font-medium">Our tools and research reach millions of users in the most repressive environments.</p>
+            </div>
+          </div>
+          <div class="flex gap-6">
+            <div class="w-12 h-12 bg-[#f5f2ed] flex items-center justify-center shrink-0 text-[#002147]">
+              <Zap size={24} />
+            </div>
+            <div>
+              <h3 class="text-xl font-serif font-bold text-[#002147] mb-2">Rapid Response</h3>
+              <p class="text-[#002147]/70 font-medium">We react quickly to emerging threats and cyber attacks against vulnerable communities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-[#f5f2ed] p-12 classic-shadow classic-border">
+        <h3 class="text-2xl font-serif font-bold text-[#002147] mb-8">Choose an Amount</h3>
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          {options.map((option) => (
+            <button class="p-6 bg-white border border-[#002147]/10 hover:border-[#c5a059] hover:bg-[#002147] hover:text-white transition-all duration-300 text-left group">
+              <span class="block text-2xl font-serif font-bold mb-2">{option.amount}</span>
+              <span class="block text-[10px] uppercase tracking-widest font-bold opacity-60 group-hover:opacity-100">One-time</span>
+            </button>
+          ))}
+        </div>
+        <div class="space-y-6">
+          <input 
+            type="number" 
+            placeholder="Custom Amount ($)" 
+            class="w-full bg-white border border-[#002147]/10 px-6 py-4 focus:outline-none focus:border-[#c5a059]"
+          />
+          <button class="w-full bg-[#002147] text-white py-5 font-bold uppercase tracking-widest hover:bg-[#c5a059] transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
+            <Heart size={18} fill="currentColor" /> Donate Now
+          </button>
+        </div>
+        <p class="text-[10px] text-[#002147]/40 uppercase tracking-widest text-center mt-8 font-bold">
+          Secure Payment Powered by Stripe
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

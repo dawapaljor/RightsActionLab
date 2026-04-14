@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { CheckCircle2 } from 'lucide-react';
+
+const activities = [
+  "Educational programs on Internet freedom, digital security and protecting against spyware",
+  "Evidence-based research to advance campaigns and support the development of freedom-enhancing technologies",
+  "In-depth training on strategic organizing and advocacy, and the application of nonviolent strategies",
+  "Development of new software that enables secure, private communications for rights defenders, journalists, and activists",
+  "Network building between communities facing extreme human rights violations"
+];
+---
+
+<Layout title="About Us" description="Rights Action Lab supports mission-aligned projects that advance human rights for people living under extreme repression.">
+  <!-- Hero -->
+  <section class="bg-[#002147] text-white py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <span class="text-[#c5a059] text-sm font-bold uppercase tracking-[0.3em] mb-6 block">Our Mission</span>
+        <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">Advancing Rights Through Innovation</h1>
+        <p class="text-xl text-white/70 leading-relaxed font-medium">
+          Rights Action Lab supports mission-aligned projects that advance human rights for people living under extreme repression by harnessing the power of secure digital communications tools with creative nonviolent activism and education.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
+      <div class="space-y-8">
+        <h2 class="text-4xl font-serif font-bold text-[#002147]">Who We Are</h2>
+        <p class="text-lg text-[#002147]/70 leading-relaxed font-medium">
+          Staff and collaborators include strategists, developers, campaigners, public intellectuals, researchers and facilitators. We facilitate linkages and support programs that provide education and training, research and advocacy, technology development and digital security outreach.
+        </p>
+        <div class="p-8 bg-[#f5f2ed] border-l-4 border-[#c5a059]">
+          <p class="text-[#002147] font-serif italic text-xl">
+            "We believe that the combination of innovative technology and strategic nonviolence is the key to addressing rights abuses in the most repressive conditions."
+          </p>
+        </div>
+      </div>
+
+      <div class="space-y-10">
+        <h3 class="text-xs uppercase tracking-[0.2em] font-bold text-[#c5a059]">What We Do</h3>
+        <ul class="space-y-6">
+          {activities.map((activity) => (
+            <li class="flex gap-4">
+              <CheckCircle2 className="text-[#002147] shrink-0 mt-1" size={20} />
+              <p class="text-[#002147]/80 font-medium leading-relaxed">{activity}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal Info -->
+  <section class="py-24 px-6 bg-[#f5f2ed]">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="inline-block p-12 bg-white classic-shadow classic-border">
+        <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4">Nonprofit Status</h3>
+        <p class="text-[#002147]/60 font-medium mb-6">
+          Rights Action Lab is a nonprofit 501(c)(3) charitable organization.
+        </p>
+        <div class="flex flex-col gap-2">
+          <p class="text-sm font-bold uppercase tracking-widest text-[#002147]">Tax ID 46-4078393</p>
+          <p class="text-xs text-[#002147]/40 uppercase tracking-widest">Registered in the United States</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

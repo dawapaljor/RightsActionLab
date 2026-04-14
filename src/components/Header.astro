@@ -1,0 +1,126 @@
+---
+import { Menu, X, ChevronDown } from 'lucide-react';
+
+const navItems = [
+  { name: 'Home', href: '/' },
+  { 
+    name: 'Current Projects', 
+    href: '#',
+    children: [
+      { name: 'Tibet Action Institute', href: '/projects/tibet-action-institute' },
+      { name: 'Guardian Project', href: '/projects/guardian-project' },
+      { name: 'TIBCERT', href: '/projects/tibcert' },
+    ]
+  },
+  { 
+    name: 'About Us', 
+    href: '#',
+    children: [
+      { name: 'Our Mission', href: '/about' },
+      { name: 'Executive Team', href: '/about/executive-team' },
+      { name: 'Board of Directors', href: '/about/board-of-directors' },
+    ]
+  },
+];
+---
+
+<header class="w-full z-50 bg-[#f5f2ed]">
+  <!-- Top Bar -->
+  <div class="bg-[#002147] text-white py-2 px-6 flex justify-between items-center text-xs tracking-widest uppercase font-medium">
+    <span>Rights Action Lab</span>
+    <div class="flex gap-6">
+      <a href="/donate" class="hover:text-[#c5a059] transition-colors">Support Our Work</a>
+      <a href="/contact" class="hover:text-[#c5a059] transition-colors">Contact</a>
+    </div>
+  </div>
+
+  <!-- Main Nav -->
+  <nav class="border-b border-[#002147]/10 px-6 py-6 lg:py-8">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="/" class="flex flex-col">
+        <span class="text-2xl lg:text-3xl font-serif font-bold tracking-tight text-[#002147]">RIGHTS ACTION LAB</span>
+        <span class="text-[10px] uppercase tracking-[0.2em] text-[#002147]/60 font-semibold mt-1">Advancing Human Rights & Digital Security</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden lg:flex items-center gap-10">
+        {navItems.map((item) => (
+          <div class="relative group">
+            <a 
+              href={item.href} 
+              class="text-sm font-semibold uppercase tracking-wider text-[#002147] hover:text-[#c5a059] transition-colors flex items-center gap-1"
+            >
+              {item.name}
+              {item.children && <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />}
+            </a>
+            
+            {item.children && (
+              <div class="absolute top-full left-0 mt-4 w-64 bg-white shadow-xl border border-[#002147]/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 py-2">
+                {item.children.map((child) => (
+                  <a 
+                    href={child.href} 
+                    class="block px-6 py-3 text-sm text-[#002147] hover:bg-[#f5f2ed] hover:text-[#c5a059] transition-colors font-medium"
+                  >
+                    {child.href.includes('/projects/') ? 'Project: ' : ''}{child.name}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+        <a 
+          href="/donate" 
+          class="bg-[#002147] text-white px-6 py-3 text-sm font-bold uppercase tracking-widest hover:bg-[#c5a059] transition-all duration-300 shadow-lg"
+        >
+          Donate
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="lg:hidden text-[#002147]" id="menu-toggle">
+        <Menu size={28} />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu (Hidden by default) -->
+  <div id="mobile-menu" class="hidden fixed inset-0 bg-[#f5f2ed] z-[60] flex flex-col p-8">
+    <div class="flex justify-between items-center mb-12">
+      <span class="text-xl font-serif font-bold text-[#002147]">RIGHTS ACTION LAB</span>
+      <button id="menu-close" class="text-[#002147]">
+        <X size={32} />
+      </button>
+    </div>
+    <div class="flex flex-col gap-8">
+      {navItems.map((item) => (
+        <div class="flex flex-col gap-4">
+          <a href={item.href} class="text-2xl font-serif font-bold text-[#002147]">{item.name}</a>
+          {item.children && (
+            <div class="flex flex-col gap-3 pl-4 border-l-2 border-[#002147]/10">
+              {item.children.map((child) => (
+                <a href={child.href} class="text-lg text-[#002147]/70 font-medium">{child.name}</a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+      <a href="/donate" class="mt-4 bg-[#002147] text-white py-4 text-center font-bold uppercase tracking-widest">Donate Now</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuClose = document.getElementById('menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  });
+
+  menuClose?.addEventListener('click', () => {
+    mobileMenu?.classList.add('hidden');
+    document.body.style.overflow = '';
+  });
+</script>
