@@ -5,17 +5,20 @@ const board = [
   {
     name: "Tenzin Fessler",
     role: "Board Chair",
-    bio: "Trained as a computer scientist, Lobsang Gyatso Sither is at the forefront of community-embedded technology development, digital security training, and innovative program design at Rights Action Lab. Programs he leads – including the Tibetan Computer Emergency Response Team (TibCERT) – effectively counter cyber attacks from some of the most powerful threat actors in the world, serving as ground-breaking models for impacted communities around the globe. Lobsang was included in Wired UK’s 2021 list of 32 innovators who are building a better future."
+    bio: "Trained as a computer scientist, Lobsang Gyatso Sither is at the forefront of community-embedded technology development, digital security training, and innovative program design at Rights Action Lab. Programs he leads – including the Tibetan Computer Emergency Response Team (TibCERT) – effectively counter cyber attacks from some of the most powerful threat actors in the world, serving as ground-breaking models for impacted communities around the globe. Lobsang was included in Wired UK’s 2021 list of 32 innovators who are building a better future.",
+    image: "../team/tenzin-fessler.jpeg"
   },
   {
     name: "Stacey Simon",
     role: "Treasurer",
-    bio: "Stacey has been an accountant for over 20 years with a focus on nonprofits and small businesses. Before running her own accounting firm for 8 years, she had over a decade of experience in corporate accounting. She has an MBA from Salem State with a concentration in financial planning, and sits on the boards of other not-for-profit organizations based in the Massachusetts area."
+    bio: "Stacey has been an accountant for over 20 years with a focus on nonprofits and small businesses. Before running her own accounting firm for 8 years, she had over a decade of experience in corporate accounting. She has an MBA from Salem State with a concentration in financial planning, and sits on the boards of other not-for-profit organizations based in the Massachusetts area.",
+    image: "../team/stacey-simon.png"
   },
   {
     name: "Dr. Sophia Conroy",
     role: "Secretary",
-    bio: "Dr. Sophia Conroy entered medical school after 13 years of experience working for and serving on the boards of human rights and social justice organizations. She earned a medical degree with a distinction in bioethics from Albany Medical College and completed her residency in family medicine at Albany Medical Center. Board certified in family medicine, Dr. Conroy serves as core faculty for the Saratoga Hospital Family Medicine Residency Program and practices primary care at the Saratoga Community Health Center."
+    bio: "Dr. Sophia Conroy entered medical school after 13 years of experience working for and serving on the boards of human rights and social justice organizations. She earned a medical degree with a distinction in bioethics from Albany Medical College and completed her residency in family medicine at Albany Medical Center. Board certified in family medicine, Dr. Conroy serves as core faculty for the Saratoga Hospital Family Medicine Residency Program and practices primary care at the Saratoga Community Health Center.",
+    image: "../team/sophia-conroy.jpeg"
   }
 ];
 ---
@@ -34,14 +37,22 @@ const board = [
   <section class="py-24 px-6 bg-white">
     <div class="max-w-4xl mx-auto space-y-20">
       {board.map((member) => (
-        <div class="border-b border-[#002147]/10 pb-20 last:border-0">
-          <div class="mb-8">
+        <div class="border-b border-[#002147]/10 pb-20 last:border-0 flex flex-col md:flex-row gap-8">
+          <img 
+                src={member.image} 
+                alt={member.name} 
+                class="w-full aspect-[5/5] object-cover classic-shadow grayscale hover:grayscale-0 transition-all duration-500"
+                referrerpolicy="no-referrer"
+              />
+          <div>
+            <div class="mb-8">
             <h3 class="text-3xl font-serif font-bold text-[#002147]">{member.name}</h3>
             <p class="text-xs uppercase tracking-widest font-bold text-[#c5a059] mt-2">{member.role}</p>
           </div>
           <p class="text-lg text-[#002147]/70 leading-relaxed font-medium">
             {member.bio}
           </p>
+          </div>
         </div>
       ))}
     </div>
