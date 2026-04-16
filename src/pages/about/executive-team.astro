@@ -39,21 +39,48 @@ const team = [
     image: "../team/lobsang-gyatso.png"
   }
 ];
+
+const board = [
+  {
+    name: "Tenzin Fessler",
+    role: "Board Chair",
+    bio: "Trained as a computer scientist, Lobsang Gyatso Sither is at the forefront of community-embedded technology development, digital security training, and innovative program design at Rights Action Lab. Programs he leads – including the Tibetan Computer Emergency Response Team (TibCERT) – effectively counter cyber attacks from some of the most powerful threat actors in the world, serving as ground-breaking models for impacted communities around the globe. Lobsang was included in Wired UK’s 2021 list of 32 innovators who are building a better future.",
+    image: "../team/tenzin-fessler.jpeg"
+  },
+  {
+    name: "Stacey Simon",
+    role: "Treasurer",
+    bio: "Stacey has been an accountant for over 20 years with a focus on nonprofits and small businesses. Before running her own accounting firm for 8 years, she had over a decade of experience in corporate accounting. She has an MBA from Salem State with a concentration in financial planning, and sits on the boards of other not-for-profit organizations based in the Massachusetts area.",
+    image: "../team/stacey-simon.png"
+  },
+  {
+    name: "Dr. Sophia Conroy",
+    role: "Secretary",
+    bio: "Dr. Sophia Conroy entered medical school after 13 years of experience working for and serving on the boards of human rights and social justice organizations. She earned a medical degree with a distinction in bioethics from Albany Medical College and completed her residency in family medicine at Albany Medical Center. Board certified in family medicine, Dr. Conroy serves as core faculty for the Saratoga Hospital Family Medicine Residency Program and practices primary care at the Saratoga Community Health Center.",
+    image: "../team/sophia-conroy.jpeg"
+  }
+];
 ---
 
-<Layout title="Executive Team" description="Meet the leadership team behind Rights Action Lab.">
+<Layout title="Executive Team & Board of Directors" description="Meet the leadership and board behind Rights Action Lab.">
   <section class="bg-[#002147] text-white py-32 px-6">
     <div class="max-w-7xl mx-auto">
       <span class="text-[#c5a059] text-sm font-bold uppercase tracking-[0.3em] mb-6 block">About Us</span>
-      <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">Executive Team</h1>
+      <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">Executive Team &amp; Board of Directors</h1>
       <p class="text-xl text-white/70 leading-relaxed font-medium max-w-2xl">
-        Our leadership brings together decades of experience in human rights advocacy, technology development, and strategic nonviolence.
+        Our leadership and board bring together decades of experience in human rights advocacy, technology development, strategic governance, and nonviolent action.
       </p>
     </div>
   </section>
 
   <section class="py-24 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
+      <div class="mb-16">
+        <h2 class="text-4xl font-serif font-bold text-[#002147] mb-4">Executive Team</h2>
+        <p class="text-lg text-[#002147]/70 leading-relaxed font-medium max-w-3xl">
+          Staff leadership guiding strategy, programs, partnerships, and delivery.
+        </p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24">
         {team.map((member) => (
           <div class="flex flex-col md:flex-row gap-8">
@@ -61,6 +88,40 @@ const team = [
               <img 
                 src={member.image} 
                 alt={member.name} 
+                class="w-full aspect-[4/5] object-cover classic-shadow grayscale hover:grayscale-0 transition-all duration-500"
+                referrerpolicy="no-referrer"
+              />
+            </div>
+            <div class="space-y-4">
+              <div>
+                <h3 class="text-2xl font-serif font-bold text-[#002147]">{member.name}</h3>
+                <p class="text-xs uppercase tracking-widest font-bold text-[#c5a059] mt-1">{member.role}</p>
+              </div>
+              <p class="text-sm text-[#002147]/70 leading-relaxed font-medium">
+                {member.bio}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="board-of-directors" class="py-24 px-6 bg-[#f5f2ed]">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16">
+        <h2 class="text-4xl font-serif font-bold text-[#002147] mb-4">Board of Directors</h2>
+        <p class="text-lg text-[#002147]/70 leading-relaxed font-medium max-w-3xl">
+          Board members providing governance and strategic oversight for mission impact.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24">
+        {board.map((member) => (
+          <div class="flex flex-col md:flex-row gap-8">
+            <div class="w-full md:w-48 shrink-0">
+              <img
+                src={member.image}
+                alt={member.name}
                 class="w-full aspect-[4/5] object-cover classic-shadow grayscale hover:grayscale-0 transition-all duration-500"
                 referrerpolicy="no-referrer"
               />
