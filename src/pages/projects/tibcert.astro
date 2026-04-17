@@ -2,8 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import { ShieldAlert, Globe, MessageSquare, Search } from 'lucide-react';
 
-export const prerender = false;
-
 const initiatives = [
   {
     title: "China Index",
@@ -22,50 +20,6 @@ const initiatives = [
   }
 ];
 
-const rssUrl = 'https://blog.tibcert.org/rss.xml';
-const blogBaseUrl = 'https://blog.tibcert.org';
-
-Astro.response.headers.set(
-  'Cache-Control',
-  'public, max-age=0, s-maxage=900, stale-while-revalidate=3600'
-);
-
-const decodeEntities = (value = '') =>
-  value
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'");
-
-const stripCdata = (value = '') => value.replace(/^<!\[CDATA\[/, '').replace(/\]\]>$/, '').trim();
-
-const getTagValue = (item, tag) => {
-  const match = item.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`, 'i'));
-  return match ? decodeEntities(stripCdata(match[1])) : '';
-};
-
-const blogPosts = await fetch(rssUrl)
-  .then((res) => {
-    if (!res.ok) throw new Error(`Failed to fetch RSS: ${res.status}`);
-    return res.text();
-  })
-  .then((xml) => {
-    const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/gi)];
-    return items.slice(0, 3).map((entry) => {
-      const item = entry[1];
-      const rawCover = getTagValue(item, 'cover');
-      return {
-        title: getTagValue(item, 'title'),
-        link: getTagValue(item, 'link'),
-        description: getTagValue(item, 'description'),
-        pubDate: getTagValue(item, 'pubDate'),
-        category: getTagValue(item, 'category'),
-        cover: rawCover ? new URL(rawCover, blogBaseUrl).toString() : ''
-      };
-    });
-  })
-  .catch(() => []);
 ---
 
 <Layout title="TIBCERT" description="Supporting and strengthening community platforms for digital security.">
@@ -160,64 +114,113 @@ const blogPosts = await fetch(rssUrl)
         </a>
       </div>
 
-      {
-        blogPosts.length > 0 ? (
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
-              <a
-                href={post.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group block border border-[#002147]/10 hover:border-[#c5a059]/50 hover:-translate-y-1 transition-all duration-300 bg-[#fdfdfd] overflow-hidden"
-              >
-                {
-                  post.cover && (
-                    <div class="aspect-[16/9] overflow-hidden border-b border-[#002147]/10">
-                      <img
-                        src={post.cover}
-                        alt={post.title}
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        referrerpolicy="no-referrer"
-                      />
-                    </div>
-                  )
-                }
-                <div class="p-8">
-                <div class="flex items-center gap-3 mb-5">
-                  <span class="text-[10px] font-bold uppercase tracking-widest text-[#c5a059]">
-                    {post.category || 'Report'}
-                  </span>
-                </div>
-                <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4 group-hover:text-[#c5a059] transition-colors">
-                  {post.title}
-                </h3>
-                <p class="text-sm text-[#002147]/65 leading-relaxed font-medium mb-6 line-clamp-4">
-                  {post.description}
-                </p>
-                <p class="text-[11px] uppercase tracking-widest font-bold text-[#002147]/50">
-                  {post.pubDate ? new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Recent'}
-                </p>
-                </div>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <div class="p-8 border border-[#002147]/10 bg-[#f5f2ed]">
+      <div id="tibcert-feed" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="p-8 border border-[#002147]/10 bg-[#f5f2ed] md:col-span-2 lg:col-span-3">
+          <p class="text-[#002147]/70 font-medium">Loading latest blog posts...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const feedEl = document.getElementById('tibcert-feed');
+      const rssUrl = 'https://blog.tibcert.org/rss.xml';
+      const blogBaseUrl = 'https://blog.tibcert.org';
+
+      const decodeEntities = (value = '') =>
+        value
+          .replace(/&amp;/g, '&')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, "'");
+
+      const getTagValue = (item, tag) => {
+        const node = item.querySelector(tag);
+        if (!node || !node.textContent) return '';
+        return decodeEntities(node.textContent.trim());
+      };
+
+      const resolveUrl = (url = '') => {
+        if (!url) return '';
+        try {
+          return new URL(url, blogBaseUrl).toString();
+        } catch {
+          return '';
+        }
+      };
+
+      const formatDate = (dateValue = '') => {
+        const parsed = new Date(dateValue);
+        if (Number.isNaN(parsed.getTime())) return 'Recent';
+        return parsed.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+      };
+
+      const escapeHtml = (value = '') =>
+        value
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+
+      const renderFallback = () => {
+        if (!feedEl) return;
+        feedEl.innerHTML = `
+          <div class="p-8 border border-[#002147]/10 bg-[#f5f2ed] md:col-span-2 lg:col-span-3">
             <p class="text-[#002147]/70 font-medium">
               Live feed is temporarily unavailable. Please check the
-              <a
-                href="https://blog.tibcert.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="ml-1 font-bold text-[#002147] hover:text-[#c5a059] transition-colors"
-              >
+              <a href="https://blog.tibcert.org/" target="_blank" rel="noopener noreferrer" class="ml-1 font-bold text-[#002147] hover:text-[#c5a059] transition-colors">
                 TIBCERT Blog
               </a>
               for the latest updates.
             </p>
           </div>
-        )
-      }
-    </div>
-  </section>
+        `;
+      };
+
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 6000);
+
+      fetch(rssUrl, { signal: controller.signal })
+        .then((res) => {
+          if (!res.ok) throw new Error(`RSS request failed: ${res.status}`);
+          return res.text();
+        })
+        .then((xmlText) => {
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+          const items = [...xmlDoc.querySelectorAll('item')].slice(0, 3);
+          if (!items.length) throw new Error('No feed items');
+
+          const cards = items.map((item) => {
+            const title = getTagValue(item, 'title') || 'Untitled';
+            const link = resolveUrl(getTagValue(item, 'link')) || blogBaseUrl;
+            const description = getTagValue(item, 'description');
+            const category = getTagValue(item, 'category') || 'Report';
+            const cover = resolveUrl(getTagValue(item, 'cover'));
+            const formattedDate = formatDate(getTagValue(item, 'pubDate'));
+
+            return `
+              <a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" class="group block border border-[#002147]/10 hover:border-[#c5a059]/50 hover:-translate-y-1 transition-all duration-300 bg-[#fdfdfd] overflow-hidden">
+                ${cover ? `<div class="aspect-[16/9] overflow-hidden border-b border-[#002147]/10"><img src="${escapeHtml(cover)}" alt="${escapeHtml(title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerpolicy="no-referrer" /></div>` : ''}
+                <div class="p-8">
+                  <div class="flex items-center gap-3 mb-5">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#c5a059]">${escapeHtml(category)}</span>
+                  </div>
+                  <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4 group-hover:text-[#c5a059] transition-colors">${escapeHtml(title)}</h3>
+                  <p class="text-sm text-[#002147]/65 leading-relaxed font-medium mb-6 line-clamp-4">${escapeHtml(description)}</p>
+                  <p class="text-[11px] uppercase tracking-widest font-bold text-[#002147]/50">${escapeHtml(formattedDate)}</p>
+                </div>
+              </a>
+            `;
+          });
+
+          if (feedEl) feedEl.innerHTML = cards.join('');
+        })
+        .catch(() => renderFallback())
+        .finally(() => clearTimeout(timeout));
+    })();
+  </script>
 </Layout>
