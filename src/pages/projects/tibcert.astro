@@ -19,18 +19,69 @@ const initiatives = [
     icon: ShieldAlert
   }
 ];
+
+const rssUrl = 'https://blog.tibcert.org/rss.xml';
+const blogBaseUrl = 'https://blog.tibcert.org';
+
+const decodeEntities = (value = '') =>
+  value
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+
+const stripCdata = (value = '') => value.replace(/^<!\[CDATA\[/, '').replace(/\]\]>$/, '').trim();
+
+const getTagValue = (item, tag) => {
+  const match = item.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`, 'i'));
+  return match ? decodeEntities(stripCdata(match[1])) : '';
+};
+
+const blogPosts = await fetch(rssUrl)
+  .then((res) => {
+    if (!res.ok) throw new Error(`Failed to fetch RSS: ${res.status}`);
+    return res.text();
+  })
+  .then((xml) => {
+    const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/gi)];
+    return items.slice(0, 3).map((entry) => {
+      const item = entry[1];
+      const rawCover = getTagValue(item, 'cover');
+      return {
+        title: getTagValue(item, 'title'),
+        link: getTagValue(item, 'link'),
+        description: getTagValue(item, 'description'),
+        pubDate: getTagValue(item, 'pubDate'),
+        category: getTagValue(item, 'category'),
+        cover: rawCover ? new URL(rawCover, blogBaseUrl).toString() : ''
+      };
+    });
+  })
+  .catch(() => []);
 ---
 
 <Layout title="TIBCERT" description="Supporting and strengthening community platforms for digital security.">
   <!-- Hero -->
   <section class="bg-[#002147] text-white py-32 px-6">
     <div class="max-w-7xl mx-auto">
-      <div class="max-w-3xl">
-        <span class="text-[#c5a059] text-sm font-bold uppercase tracking-[0.3em] mb-6 block">Current Project</span>
-        <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">TIBCERT</h1>
-        <p class="text-xl text-white/70 leading-relaxed font-medium">
-          The Tibetan Computer Emergency Response Team (TibCERT) counters cyber attacks from powerful threat actors, serving as a model for impacted communities worldwide.
-        </p>
+      <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-10 justify-between">
+        
+        <div class="max-w-3xl">
+          <span class="text-[#c5a059] text-sm font-bold uppercase tracking-[0.3em] mb-6 block">Current Project</span>
+          <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">TIBCERT</h1>
+          <p class="text-xl text-white/70 leading-relaxed font-medium">
+            The Tibetan Computer Emergency Response Team (TibCERT) counters cyber attacks from powerful threat actors, serving as a model for impacted communities worldwide.
+          </p>
+        </div>
+        <div class="w-[190px] h-[80px] flex items-center">
+          <img
+            src="/logo/tibcert-logo.svg"
+            alt="TIBCERT logo"
+            class="w-full h-full object-contain"
+            referrerpolicy="no-referrer"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -60,7 +111,7 @@ const initiatives = [
       <div class="relative">
         <div class="absolute inset-0 bg-[#c5a059] opacity-10 blur-3xl rounded-full"></div>
         <img 
-          src="https://picsum.photos/seed/cybersecurity/800/600" 
+          src="https://res.cloudinary.com/daarpik83/image/upload/v1724040530/China-repression_geepcz.png" 
           alt="Cyber Security" 
           class="relative z-10 w-full h-auto classic-shadow grayscale hover:grayscale-0 transition-all duration-700"
           referrerpolicy="no-referrer"
@@ -81,6 +132,84 @@ const initiatives = [
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="text-[#c5a059] text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Live Feed</span>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-[#002147]">From the TIBCERT Blog</h2>
+        </div>
+        <a
+          href="https://blog.tibcert.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#002147] hover:text-[#c5a059] transition-colors"
+        >
+          Visit Blog
+        </a>
+      </div>
+
+      {
+        blogPosts.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.map((post) => (
+              <a
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group block border border-[#002147]/10 hover:border-[#c5a059]/50 hover:-translate-y-1 transition-all duration-300 bg-[#fdfdfd] overflow-hidden"
+              >
+                {
+                  post.cover && (
+                    <div class="aspect-[16/9] overflow-hidden border-b border-[#002147]/10">
+                      <img
+                        src={post.cover}
+                        alt={post.title}
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        referrerpolicy="no-referrer"
+                      />
+                    </div>
+                  )
+                }
+                <div class="p-8">
+                <div class="flex items-center gap-3 mb-5">
+                  <span class="text-[10px] font-bold uppercase tracking-widest text-[#c5a059]">
+                    {post.category || 'Report'}
+                  </span>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4 group-hover:text-[#c5a059] transition-colors">
+                  {post.title}
+                </h3>
+                <p class="text-sm text-[#002147]/65 leading-relaxed font-medium mb-6 line-clamp-4">
+                  {post.description}
+                </p>
+                <p class="text-[11px] uppercase tracking-widest font-bold text-[#002147]/50">
+                  {post.pubDate ? new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Recent'}
+                </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="p-8 border border-[#002147]/10 bg-[#f5f2ed]">
+            <p class="text-[#002147]/70 font-medium">
+              Live feed is temporarily unavailable. Please check the
+              <a
+                href="https://blog.tibcert.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="ml-1 font-bold text-[#002147] hover:text-[#c5a059] transition-colors"
+              >
+                TIBCERT Blog
+              </a>
+              for the latest updates.
+            </p>
+          </div>
+        )
+      }
     </div>
   </section>
 </Layout>
