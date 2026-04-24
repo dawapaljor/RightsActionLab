@@ -26,7 +26,7 @@ const navItems = [
 <header class="w-full z-50 bg-[#f5f2ed]">
   <!-- Top Bar -->
   <div class="bg-[#002147] text-white py-2 px-6 flex justify-between items-center text-xs tracking-widest uppercase font-medium">
-    <span>Rights Action Lab</span>
+    <span></span>
     <div class="flex gap-6">
       <a href="/donate" class="hover:text-[#c5a059] transition-colors">Support Our Work</a>
       <a href="/contact" class="hover:text-[#c5a059] transition-colors">Contact</a>
@@ -34,11 +34,14 @@ const navItems = [
   </div>
 
   <!-- Main Nav -->
-  <nav class="border-b border-[#002147]/10 px-6 py-6 lg:py-8">
+  <nav class="border-b border-[#002147]/10 px-4 lg:px-6 py-4 lg:py-0">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="/" class="flex flex-col">
-        <span class="text-2xl lg:text-3xl font-serif font-bold tracking-tight text-[#002147]">RIGHTS ACTION LAB</span>
-        <span class="text-[10px] uppercase tracking-[0.2em] text-[#002147]/60 font-semibold mt-1">Advancing Human Rights & Digital Security</span>
+      <a href="/" class="flex items-center gap-2 lg:gap-4">
+        <img src="/RAL-logo.svg" alt="Rights Action Lab Logo" class="w-12 h-12 lg:w-24 lg:h-24 flex-shrink-0" />
+        <div class="flex flex-col">
+          <span class="text-lg lg:text-3xl font-serif font-bold tracking-tight text-[#002147]">RIGHTS ACTION LAB</span>
+          <span class="text-[8px] lg:text-[10px] uppercase tracking-[0.15em] lg:tracking-[0.2em] text-[#002147]/60 font-semibold">Advancing Human Rights & Digital Security</span>
+        </div>
       </a>
 
       <!-- Desktop Nav -->
