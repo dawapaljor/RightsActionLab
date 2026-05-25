@@ -1,38 +1,54 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { ShieldAlert, Globe, MessageSquare, Search } from 'lucide-react';
+import Layout from "../../layouts/Layout.astro";
+import { ShieldAlert, Globe, MessageSquare, Search } from "lucide-react";
 
 const initiatives = [
   {
     title: "China Index",
-    description: "The first cross-regional project to objectively measure and visualize the People‘s Republic of China (PRC)‘s overseas influence through comparable data.",
-    icon: Globe
+    description:
+      "The first cross-regional project to objectively measure and visualize the People‘s Republic of China (PRC)‘s overseas influence through comparable data.",
+    icon: Globe,
+    url: "https://china-index.io/",
   },
   {
-    title: "Tibet's Voice in Cyber Security",
-    description: "Positioning Tibet on the global cybersecurity stage, highlighting China's censorship and surveillance in Tibet and transnational digital repression.",
-    icon: MessageSquare
+    title: "Tibet's Voice in Cyber Security Discourse",
+    description:
+      "TibCERT is positioning Tibet on the global cybersecurity stage, highlighting China's censorship and surveillance in Tibet, as well as the regime’s transnational digital repression of the diaspora.",
+    icon: MessageSquare,
+    url: "https://creators.spotify.com/pod/profile/thisweekincyberspace/episodes/7-16---Lobsang-Gyatso-Sither-e2vejvh/a-abq7ttp",
   },
   {
     title: "TibCERT Response Hub",
-    description: "A volunteer-based community platform built on the structure of Learn, Share, Network and Support to counter cyber attacks.",
-    icon: ShieldAlert
-  }
+    description:
+      "A volunteer-based community platform built on the structure of Learn, Share, Network and Support to counter cyber attacks.",
+    icon: ShieldAlert,
+    url: "https://tibcert.org/response-hub",
+  },
 ];
-
 ---
 
-<Layout title="TIBCERT" description="Supporting and strengthening community platforms for digital security.">
+<Layout
+  title="TIBCERT"
+  description="Supporting and strengthening community platforms for digital security."
+>
   <!-- Hero -->
   <section class="bg-[#002147] text-white py-32 px-6">
     <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-10 justify-between">
-        
+      <div
+        class="flex flex-col md:flex-row md:items-center gap-8 md:gap-10 justify-between"
+      >
         <div class="max-w-3xl">
-          <span class="text-[#c5a059] text-sm font-bold uppercase tracking-[0.3em] mb-6 block">Current Project</span>
-          <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">TIBCERT</h1>
+          <span
+            class="text-[#c5a059] text-sm font-bold uppercase tracking-[0.3em] mb-6 block"
+            >Current Project</span
+          >
+          <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">
+            TIBCERT
+          </h1>
           <p class="text-xl text-white/70 leading-relaxed font-medium">
-            The Tibetan Computer Emergency Response Team (TibCERT) counters cyber attacks from powerful threat actors, serving as a model for impacted communities worldwide.
+            The Tibetan Computer Emergency Response Team (TibCERT) counters
+            cyber attacks from powerful threat actors, serving as a model for
+            impacted communities worldwide.
           </p>
           <div class="w-[190px] h-[80px] flex items-end">
             <img
@@ -43,7 +59,6 @@ const initiatives = [
             />
           </div>
         </div>
-       
       </div>
     </div>
   </section>
@@ -52,44 +67,75 @@ const initiatives = [
   <section class="py-24 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-        {initiatives.map((item) => (
-          <div class="flex flex-col gap-8 p-10 bg-[#f5f2ed] classic-shadow border-t-4 border-[#002147]">
-            <div class="text-[#002147]">
-              <item.icon size={48} strokeWidth={1.5} />
+        {
+          initiatives.map((item) => (
+            <div class="flex flex-col gap-8 p-10 bg-[#f5f2ed] classic-shadow border-t-4 border-[#002147]">
+              <div>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-[#002147] hover:text-[#c5a059] transition-all duration-300 inline-block hover:scale-105"
+                >
+                  <item.icon size={48} strokeWidth={1.5} />
+                </a>
+              </div>
+              <h3 class="text-3xl font-serif font-bold text-[#002147] hover:text-[#c5a059] transition-colors duration-300">
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  {item.title}
+                </a>
+              </h3>
+              <p class="text-[#002147]/70 leading-relaxed font-medium">
+                {item.description}
+              </p>
             </div>
-            <h3 class="text-3xl font-serif font-bold text-[#002147]">{item.title}</h3>
-            <p class="text-[#002147]/70 leading-relaxed font-medium">
-              {item.description}
-            </p>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
 
   <!-- Featured Content -->
   <section class="py-24 px-6 bg-[#002147] text-white overflow-hidden">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <div
+      class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
+    >
       <div class="relative">
-        <div class="absolute inset-0 bg-[#c5a059] opacity-10 blur-3xl rounded-full"></div>
-        <img 
-          src="https://res.cloudinary.com/daarpik83/image/upload/v1724040530/China-repression_geepcz.png" 
-          alt="Cyber Security" 
+        <div
+          class="absolute inset-0 bg-[#c5a059] opacity-10 blur-3xl rounded-full"
+        >
+        </div>
+        <img
+          src="https://res.cloudinary.com/daarpik83/image/upload/v1724040530/China-repression_geepcz.png"
+          alt="Cyber Security"
           class="relative z-10 w-full h-auto classic-shadow grayscale hover:grayscale-0 transition-all duration-700"
           referrerpolicy="no-referrer"
         />
       </div>
       <div class="space-y-8">
-        <h2 class="text-4xl md:text-5xl font-serif font-bold">Countering Transnational Repression</h2>
+        <h2 class="text-4xl md:text-5xl font-serif font-bold">
+          Countering Transnational Repression
+        </h2>
         <p class="text-lg text-white/70 leading-relaxed font-medium">
-          TibCERT effectively counters sophisticated cyber attacks, providing ground-breaking models for digital defense. Our work highlights the regime’s digital repression of the diaspora and strengthens community resilience.
+          TibCERT effectively counters sophisticated cyber attacks, providing
+          ground-breaking models for digital defense. Our work highlights the
+          regime’s digital repression of the diaspora and strengthens community
+          resilience.
         </p>
         <div class="pt-6">
-          <div class="flex items-center gap-4 p-6 bg-white/5 border border-white/10">
+          <div
+            class="flex items-center gap-4 p-6 bg-white/5 border border-white/10"
+          >
             <Search className="text-[#c5a059]" />
             <div>
-              <p class="text-sm font-bold uppercase tracking-widest text-[#c5a059]">Wired UK Innovators</p>
-              <p class="text-xs text-white/50">Recognized among 32 innovators building a better future.</p>
+              <p
+                class="text-sm font-bold uppercase tracking-widest text-[#c5a059]"
+              >
+                Wired UK Innovators
+              </p>
+              <p class="text-xs text-white/50">
+                Recognized among 32 innovators building a better future.
+              </p>
             </div>
           </div>
         </div>
@@ -101,8 +147,13 @@ const initiatives = [
     <div class="max-w-7xl mx-auto">
       <div class="flex items-end justify-between gap-6 mb-12">
         <div>
-          <span class="text-[#c5a059] text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Live Feed</span>
-          <h2 class="text-4xl md:text-5xl font-serif font-bold text-[#002147]">From the TIBCERT Blog</h2>
+          <span
+            class="text-[#c5a059] text-xs font-bold uppercase tracking-[0.3em] mb-4 block"
+            >Live Feed</span
+          >
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-[#002147]">
+            From the TIBCERT Blog
+          </h2>
         </div>
         <a
           href="https://blog.tibcert.org/"
@@ -114,9 +165,16 @@ const initiatives = [
         </a>
       </div>
 
-      <div id="tibcert-feed" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="p-8 border border-[#002147]/10 bg-[#f5f2ed] md:col-span-2 lg:col-span-3">
-          <p class="text-[#002147]/70 font-medium">Loading latest blog posts...</p>
+      <div
+        id="tibcert-feed"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        <div
+          class="p-8 border border-[#002147]/10 bg-[#f5f2ed] md:col-span-2 lg:col-span-3"
+        >
+          <p class="text-[#002147]/70 font-medium">
+            Loading latest blog posts...
+          </p>
         </div>
       </div>
     </div>
@@ -124,46 +182,50 @@ const initiatives = [
 
   <script is:inline>
     (() => {
-      const feedEl = document.getElementById('tibcert-feed');
-      const rssUrl = 'https://blog.tibcert.org/rss.xml';
-      const blogBaseUrl = 'https://blog.tibcert.org';
+      const feedEl = document.getElementById("tibcert-feed");
+      const rssUrl = "https://blog.tibcert.org/rss.xml";
+      const blogBaseUrl = "https://blog.tibcert.org";
 
-      const decodeEntities = (value = '') =>
+      const decodeEntities = (value = "") =>
         value
-          .replace(/&amp;/g, '&')
-          .replace(/&lt;/g, '<')
-          .replace(/&gt;/g, '>')
+          .replace(/&amp;/g, "&")
+          .replace(/&lt;/g, "<")
+          .replace(/&gt;/g, ">")
           .replace(/&quot;/g, '"')
           .replace(/&#39;/g, "'");
 
       const getTagValue = (item, tag) => {
         const node = item.querySelector(tag);
-        if (!node || !node.textContent) return '';
+        if (!node || !node.textContent) return "";
         return decodeEntities(node.textContent.trim());
       };
 
-      const resolveUrl = (url = '') => {
-        if (!url) return '';
+      const resolveUrl = (url = "") => {
+        if (!url) return "";
         try {
           return new URL(url, blogBaseUrl).toString();
         } catch {
-          return '';
+          return "";
         }
       };
 
-      const formatDate = (dateValue = '') => {
+      const formatDate = (dateValue = "") => {
         const parsed = new Date(dateValue);
-        if (Number.isNaN(parsed.getTime())) return 'Recent';
-        return parsed.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        if (Number.isNaN(parsed.getTime())) return "Recent";
+        return parsed.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        });
       };
 
-      const escapeHtml = (value = '') =>
+      const escapeHtml = (value = "") =>
         value
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#39;');
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
 
       const renderFallback = () => {
         if (!feedEl) return;
@@ -190,21 +252,21 @@ const initiatives = [
         })
         .then((xmlText) => {
           const parser = new DOMParser();
-          const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-          const items = [...xmlDoc.querySelectorAll('item')].slice(0, 3);
-          if (!items.length) throw new Error('No feed items');
+          const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+          const items = [...xmlDoc.querySelectorAll("item")].slice(0, 3);
+          if (!items.length) throw new Error("No feed items");
 
           const cards = items.map((item) => {
-            const title = getTagValue(item, 'title') || 'Untitled';
-            const link = resolveUrl(getTagValue(item, 'link')) || blogBaseUrl;
-            const description = getTagValue(item, 'description');
-            const category = getTagValue(item, 'category') || 'Report';
-            const cover = resolveUrl(getTagValue(item, 'cover'));
-            const formattedDate = formatDate(getTagValue(item, 'pubDate'));
+            const title = getTagValue(item, "title") || "Untitled";
+            const link = resolveUrl(getTagValue(item, "link")) || blogBaseUrl;
+            const description = getTagValue(item, "description");
+            const category = getTagValue(item, "category") || "Report";
+            const cover = resolveUrl(getTagValue(item, "cover"));
+            const formattedDate = formatDate(getTagValue(item, "pubDate"));
 
             return `
               <a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" class="group block border border-[#002147]/10 hover:border-[#c5a059]/50 hover:-translate-y-1 transition-all duration-300 bg-[#fdfdfd] overflow-hidden">
-                ${cover ? `<div class="aspect-[16/9] overflow-hidden border-b border-[#002147]/10"><img src="${escapeHtml(cover)}" alt="${escapeHtml(title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerpolicy="no-referrer" /></div>` : ''}
+                ${cover ? `<div class="aspect-[16/9] overflow-hidden border-b border-[#002147]/10"><img src="${escapeHtml(cover)}" alt="${escapeHtml(title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerpolicy="no-referrer" /></div>` : ""}
                 <div class="p-8">
                   <div class="flex items-center gap-3 mb-5">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-[#c5a059]">${escapeHtml(category)}</span>
@@ -217,7 +279,7 @@ const initiatives = [
             `;
           });
 
-          if (feedEl) feedEl.innerHTML = cards.join('');
+          if (feedEl) feedEl.innerHTML = cards.join("");
         })
         .catch(() => renderFallback())
         .finally(() => clearTimeout(timeout));

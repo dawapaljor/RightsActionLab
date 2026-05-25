@@ -1,50 +1,70 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { Shield, Lock, Smartphone, Wifi, Share2, EyeOff } from 'lucide-react';
+import Layout from "../../layouts/Layout.astro";
+import { ExternalLink } from "lucide-react";
 
 const tools = [
   {
     name: "Keanu Engine",
-    description: "Offers app and web experiences that enable safe and secure communication among communities.",
-    icon: Shield
+    description:
+      "Offers app and web experiences that enable safe and secure communication among communities.",
+    url: "https://keanu.im/",
   },
   {
     name: "Butter Box Offline App Store",
-    description: "Broadcasts its own WiFi network to share apps and join public or private chatrooms without internet.",
-    icon: Wifi
+    description:
+      "Broadcasts its own WiFi network to share apps and join public or private chatrooms without internet.",
+    url: "https://likebutter.app/",
   },
   {
     name: "ProofMode",
-    description: "Capture, share, and preserve verifiable photos and videos with cryptographic proof.",
-    icon: Lock
+    description:
+      "Capture, share, and preserve verifiable photos and videos with cryptographic proof.",
+    url: "https://proofmode.org/",
   },
   {
     name: "Circulo",
-    description: "Connect to a reliable network of six peers. Establish protocols, send alerts and keep your circle informed.",
-    icon: Share2
+    description:
+      "Connect to a reliable network of six peers. Establish protocols, send alerts and keep your circle informed.",
+    url: "https://encirculo.org/en/",
   },
   {
     name: "LetsConvene",
-    description: "An easy-to-use, ephemeral, and privacy-preserving communications and information sharing tool.",
-    icon: EyeOff
-  }
+    description:
+      "An easy-to-use, ephemeral, and privacy-preserving communications and information sharing tool.",
+    url: "https://letsconvene.im/",
+  },
 ];
 ---
 
-<Layout title="Guardian Project" description="Secure communications, information sharing tools and platforms developed through Rights Action Lab.">
+<Layout
+  title="Guardian Project"
+  description="Secure communications, information sharing tools and platforms developed through Rights Action Lab."
+>
   <!-- Hero -->
   <section class="bg-[#002147] text-white py-32 px-6 relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
-      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+      <div
+        class="absolute inset-0"
+        style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"
+      >
+      </div>
     </div>
     <div class="max-w-7xl mx-auto relative z-10">
-      <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-10 justify-between">
-        
+      <div
+        class="flex flex-col md:flex-row md:items-center gap-8 md:gap-10 justify-between"
+      >
         <div class="max-w-3xl">
-          <span class="text-[#c5a059] text-sm font-bold uppercase tracking-[0.3em] mb-6 block">Current Project</span>
-          <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">Guardian Project</h1>
+          <span
+            class="text-[#c5a059] text-sm font-bold uppercase tracking-[0.3em] mb-6 block"
+            >Current Project</span
+          >
+          <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">
+            Guardian Project
+          </h1>
           <p class="text-xl text-white/70 leading-relaxed font-medium">
-            An award-winning, open-source mobile security collaborative developing tools for activists, journalists, and humanitarian workers worldwide.
+            An award-winning, open-source mobile security collaborative
+            developing tools for activists, journalists, and humanitarian
+            workers worldwide.
           </p>
           <div class="w-[190px] h-[80px] flex items-center">
             <img
@@ -55,7 +75,6 @@ const tools = [
             />
           </div>
         </div>
-        
       </div>
     </div>
   </section>
@@ -64,30 +83,67 @@ const tools = [
   <section class="py-24 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-20">
-        <h2 class="text-4xl font-serif font-bold text-[#002147] mb-6">Secure Technology for Human Rights</h2>
+        <h2 class="text-4xl font-serif font-bold text-[#002147] mb-6">
+          Secure Technology for Human Rights
+        </h2>
         <p class="text-lg text-[#002147]/60 font-medium">
-          We develop, test, and distribute software that enables secure, private communications in the most challenging environments.
+          We develop, test, and distribute software that enables secure, private
+          communications in the most challenging environments.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {tools.map((tool) => (
-          <div class="p-10 border border-[#002147]/10 hover:border-[#c5a059] transition-all duration-300 group bg-[#f5f2ed]/30">
-            <div class="w-14 h-14 bg-[#002147] text-white flex items-center justify-center mb-8 group-hover:bg-[#c5a059] transition-colors duration-300">
-              <tool.icon size={28} />
+        {
+          tools.map((tool) => (
+            <div class="border border-[#002147]/10 hover:border-[#c5a059] transition-all duration-300 group bg-[#f5f2ed]/30 flex flex-col justify-between h-full">
+              <div>
+                <div class="relative aspect-[16/10] overflow-hidden border-b border-[#002147]/10 bg-[#002147]/5">
+                  <div class="flex items-center gap-1.5 px-4 py-3 bg-[#002147]/5 border-b border-[#002147]/10">
+                    <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
+                    <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+                    <div class="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
+                    <div class="ml-4 flex-1 bg-white/80 rounded px-2.5 py-0.5 text-[10px] text-[#002147]/55 font-mono truncate select-none">
+                      {tool.url.replace(/^https?:\/\//, "")}
+                    </div>
+                  </div>
+                  <img
+                    src={`https://api.microlink.io/?url=${encodeURIComponent(tool.url)}&screenshot=true&embed=screenshot.url`}
+                    alt={`Preview of ${tool.name}`}
+                    class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                  />
+                </div>
+
+                <div class="p-8">
+                  <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4">
+                    {tool.name}
+                  </h3>
+                  <p class="text-[#002147]/70 text-sm leading-relaxed font-medium">
+                    {tool.description}
+                  </p>
+                </div>
+              </div>
+
+              <div class="px-8 pb-8 pt-0">
+                <a
+                  href={tool.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#002147] hover:text-[#c5a059] transition-colors"
+                >
+                  Visit Website <ExternalLink size={14} />
+                </a>
+              </div>
             </div>
-            <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4">{tool.name}</h3>
-            <p class="text-[#002147]/70 text-sm leading-relaxed font-medium">
-              {tool.description}
-            </p>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
 
   <!-- Featured App -->
-  <section class="py-24 px-6 bg-[#002147] text-white">
+  <!-- <section class="py-24 px-6 bg-[#002147] text-white">
     <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
       <div class="flex-1 space-y-8">
         <span class="text-[#c5a059] text-xs font-bold uppercase tracking-[0.3em]">Flagship Application</span>
@@ -125,5 +181,5 @@ const tools = [
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 </Layout>
