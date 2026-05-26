@@ -123,7 +123,8 @@ const projects = [
           </h2>
           <div class="w-24 h-1 bg-[#c5a059] mx-auto mb-12"></div>
           <h4
-            class="md:text-5xl font-serif font-bold text-[#002147] text-center"
+            class="md:text-5xl font-serif font-bold text-[#002147] text-center pt-20"
+            id="projects"
           >
             Current Projects
           </h4>
@@ -138,7 +139,7 @@ const projects = [
           projects.map((project) => (
             <a
               href={project.href}
-              class="group block py-4 transition-all duration-300"
+              class="group block p-8 bg-[#f5f2ed]/30 border border-[#002147]/10 hover:border-[#c5a059] hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               <div class="mb-7">
                 <div class="w-[190px] h-[64px] flex items-center justify-center">
