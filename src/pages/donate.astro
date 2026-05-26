@@ -1,21 +1,44 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Heart, Shield, Globe, Zap } from 'lucide-react';
+import Layout from "../layouts/Layout.astro";
+import { Heart, Shield, Globe, Zap } from "lucide-react";
 
 const options = [
-  { amount: "$50", description: "Supports digital security training for one activist." },
-  { amount: "$100", description: "Contributes to the development of secure communication tools." },
-  { amount: "$250", description: "Funds research into human rights abuses in repressive regions." },
-  { amount: "$500", description: "Sponsors a community-led digital defense initiative." }
+  {
+    amount: "$50",
+    description: "Supports digital security training for one activist.",
+  },
+  {
+    amount: "$100",
+    description:
+      "Contributes to the development of secure communication tools.",
+  },
+  {
+    amount: "$250",
+    description:
+      "Funds research into human rights abuses in repressive regions.",
+  },
+  {
+    amount: "$500",
+    description: "Sponsors a community-led digital defense initiative.",
+  },
 ];
 ---
 
-<Layout title="Support Our Work" description="Donate to Rights Action Lab and help us advance human rights and digital security.">
+<Layout
+  title="Support Our Work"
+  description="Donate to Rights Action Lab and help us advance human rights and digital security."
+>
   <section class="bg-[#002147] text-white py-32 px-6">
     <div class="max-w-7xl mx-auto text-center">
-      <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">Support Our Work</h1>
-      <p class="text-xl text-white/70 leading-relaxed font-medium max-w-2xl mx-auto">
-        Your contribution empowers those on the frontlines of human rights advocacy with the tools and training they need to stay safe and effective.
+      <h1 class="text-5xl md:text-7xl font-serif font-bold mb-8">
+        Support Our Projects
+      </h1>
+      <p
+        class="text-xl text-white/70 leading-relaxed font-medium max-w-2xl mx-auto"
+      >
+        Your contribution empowers those on the frontlines of human rights
+        advocacy with the tools and training they need to stay safe and
+        effective.
       </p>
     </div>
   </section>
@@ -26,59 +49,192 @@ const options = [
         <h2 class="text-4xl font-serif font-bold text-[#002147]">Why Give?</h2>
         <div class="space-y-8">
           <div class="flex gap-6">
-            <div class="w-12 h-12 flex items-center justify-center shrink-0 text-[#002147]">
+            <div
+              class="w-12 h-12 flex items-center justify-center shrink-0 text-[#002147]"
+            >
               <Shield size={24} />
             </div>
             <div>
-              <h3 class="text-xl font-serif font-bold text-[#002147] mb-2">Protect Activists</h3>
-              <p class="text-[#002147]/70 font-medium">We provide the digital armor needed to withstand surveillance and censorship.</p>
+              <h3 class="text-xl font-serif font-bold text-[#002147] mb-2">
+                Protect Activists
+              </h3>
+              <p class="text-[#002147]/70 font-medium">
+                We provide the digital armor needed to withstand surveillance
+                and censorship.
+              </p>
             </div>
           </div>
           <div class="flex gap-6">
-            <div class="w-12 h-12 flex items-center justify-center shrink-0 text-[#002147]">
+            <div
+              class="w-12 h-12 flex items-center justify-center shrink-0 text-[#002147]"
+            >
               <Globe size={24} />
             </div>
             <div>
-              <h3 class="text-xl font-serif font-bold text-[#002147] mb-2">Global Impact</h3>
-              <p class="text-[#002147]/70 font-medium">Our tools and research reach millions of users in the most repressive environments.</p>
+              <h3 class="text-xl font-serif font-bold text-[#002147] mb-2">
+                Global Impact
+              </h3>
+              <p class="text-[#002147]/70 font-medium">
+                Our tools and research reach millions of users in the most
+                repressive environments.
+              </p>
             </div>
           </div>
           <div class="flex gap-6">
-            <div class="w-12 h-12 flex items-center justify-center shrink-0 text-[#002147]">
+            <div
+              class="w-12 h-12 flex items-center justify-center shrink-0 text-[#002147]"
+            >
               <Zap size={24} />
             </div>
             <div>
-              <h3 class="text-xl font-serif font-bold text-[#002147] mb-2">Rapid Response</h3>
-              <p class="text-[#002147]/70 font-medium">We react quickly to emerging threats and cyber attacks against vulnerable communities.</p>
+              <h3 class="text-xl font-serif font-bold text-[#002147] mb-2">
+                Rapid Response
+              </h3>
+              <p class="text-[#002147]/70 font-medium">
+                We react quickly to emerging threats and cyber attacks against
+                vulnerable communities.
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="bg-[#f5f2ed] p-12 classic-shadow classic-border">
-        <h3 class="text-2xl font-serif font-bold text-[#002147] mb-8">Choose an Amount</h3>
-        <div class="grid grid-cols-2 gap-4 mb-8">
-          {options.map((option) => (
-            <button class="p-6 bg-white border border-[#002147]/10 hover:border-[#c5a059] hover:bg-[#002147] hover:text-white transition-all duration-300 text-left group">
-              <span class="block text-2xl font-serif font-bold mb-2">{option.amount}</span>
-              <span class="block text-[10px] uppercase tracking-widest font-bold opacity-60 group-hover:opacity-100">One-time</span>
+      <div class="bg-white p-8 md:p-12 classic-shadow classic-border flex flex-col justify-between">
+        <div>
+          <h3 class="text-2xl font-serif font-bold text-[#002147] mb-8">
+            Choose Your Frequency
+          </h3>
+          
+          <!-- Tab Headers -->
+          <div class="flex border-b border-[#002147]/10 mb-8" role="tablist">
+            <button
+              id="tab-weekly"
+              class="flex-1 text-center pb-4 font-serif font-bold text-lg border-b-2 border-[#002147] text-[#002147] transition-all duration-300 cursor-pointer"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-weekly"
+            >
+              Weekly
             </button>
-          ))}
+            <button
+              id="tab-monthly"
+              class="flex-1 text-center pb-4 font-serif font-bold text-lg border-b-2 border-transparent text-[#002147]/40 hover:text-[#002147]/80 hover:border-[#002147]/20 transition-all duration-300 cursor-pointer"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-monthly"
+            >
+              Monthly
+            </button>
+          </div>
+
+          <!-- Tab Contents -->
+          <div id="panel-weekly" role="tabpanel" aria-labelledby="tab-weekly" class="block min-h-[350px]">
+            <!-- Place weekly donation frame/iframe here -->
+            <div class="w-full h-full min-h-[350px] flex flex-col items-center justify-center border border-dashed border-[#002147]/20 rounded bg-[#f5f2ed]/20 p-6 text-center">
+              <div class="text-[#c5a059] mb-3 animate-pulse">
+                <Heart size={40} />
+              </div>
+              <p class="text-lg font-serif font-bold text-[#002147] mb-1">Weekly Support</p>
+              <p class="text-sm text-[#002147]/60 max-w-sm">
+                Embed your weekly donation form frame here.
+              </p>
+            </div>
+          </div>
+
+          <div id="panel-monthly" role="tabpanel" aria-labelledby="tab-monthly" class="hidden min-h-[350px]">
+            <!-- Place monthly donation frame/iframe here -->
+            <div class="w-full h-full min-h-[350px] flex flex-col items-center justify-center border border-dashed border-[#002147]/20 rounded bg-[#f5f2ed]/20 p-6 text-center">
+              <div class="text-[#c5a059] mb-3 animate-pulse">
+                <Heart size={40} fill="currentColor" />
+              </div>
+              <p class="text-lg font-serif font-bold text-[#002147] mb-1">Monthly Support</p>
+              <p class="text-sm text-[#002147]/60 max-w-sm">
+                Embed your monthly donation form frame here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tabWeekly = document.getElementById('tab-weekly');
+        const tabMonthly = document.getElementById('tab-monthly');
+        const panelWeekly = document.getElementById('panel-weekly');
+        const panelMonthly = document.getElementById('panel-monthly');
+
+        if (tabWeekly && tabMonthly && panelWeekly && panelMonthly) {
+          tabWeekly.addEventListener('click', () => {
+            // Toggle Active States for Buttons
+            tabWeekly.classList.add('border-[#002147]', 'text-[#002147]');
+            tabWeekly.classList.remove('border-transparent', 'text-[#002147]/40');
+            tabWeekly.setAttribute('aria-selected', 'true');
+
+            tabMonthly.classList.remove('border-[#002147]', 'text-[#002147]');
+            tabMonthly.classList.add('border-transparent', 'text-[#002147]/40');
+            tabMonthly.setAttribute('aria-selected', 'false');
+
+            // Toggle Panels Visibility
+            panelWeekly.classList.remove('hidden');
+            panelWeekly.classList.add('block');
+            panelMonthly.classList.remove('block');
+            panelMonthly.classList.add('hidden');
+          });
+
+          tabMonthly.addEventListener('click', () => {
+            // Toggle Active States for Buttons
+            tabMonthly.classList.add('border-[#002147]', 'text-[#002147]');
+            tabMonthly.classList.remove('border-transparent', 'text-[#002147]/40');
+            tabMonthly.setAttribute('aria-selected', 'true');
+
+            tabWeekly.classList.remove('border-[#002147]', 'text-[#002147]');
+            tabWeekly.classList.add('border-transparent', 'text-[#002147]/40');
+            tabWeekly.setAttribute('aria-selected', 'false');
+
+            // Toggle Panels Visibility
+            panelMonthly.classList.remove('hidden');
+            panelMonthly.classList.add('block');
+            panelWeekly.classList.remove('block');
+            panelWeekly.classList.add('hidden');
+          });
+        }
+      </script>
+
+      <!-- <div class="bg-[#f5f2ed] p-12 classic-shadow classic-border">
+        <h3 class="text-2xl font-serif font-bold text-[#002147] mb-8">
+          Choose an Amount
+        </h3>
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          {
+            options.map((option) => (
+              <button class="p-6 bg-white border border-[#002147]/10 hover:border-[#c5a059] hover:bg-[#002147] hover:text-white transition-all duration-300 text-left group">
+                <span class="block text-2xl font-serif font-bold mb-2">
+                  {option.amount}
+                </span>
+                <span class="block text-[10px] uppercase tracking-widest font-bold opacity-60 group-hover:opacity-100">
+                  One-time
+                </span>
+              </button>
+            ))
+          }
         </div>
         <div class="space-y-6">
-          <input 
-            type="number" 
-            placeholder="Custom Amount ($)" 
+          <input
+            type="number"
+            placeholder="Custom Amount ($)"
             class="w-full bg-white border border-[#002147]/10 px-6 py-4 focus:outline-none focus:border-[#c5a059]"
           />
-          <button class="w-full bg-[#002147] text-white py-5 font-bold uppercase tracking-widest hover:bg-[#c5a059] transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
+          <button
+            class="w-full bg-[#002147] text-white py-5 font-bold uppercase tracking-widest hover:bg-[#c5a059] transition-all duration-300 shadow-xl flex items-center justify-center gap-3"
+          >
             <Heart size={18} fill="currentColor" /> Donate Now
           </button>
         </div>
-        <p class="text-[10px] text-[#002147]/40 uppercase tracking-widest text-center mt-8 font-bold">
+        <p
+          class="text-[10px] text-[#002147]/40 uppercase tracking-widest text-center mt-8 font-bold"
+        >
           Secure Payment Powered by Stripe
         </p>
-      </div>
+      </div> -->
     </div>
   </section>
 </Layout>
