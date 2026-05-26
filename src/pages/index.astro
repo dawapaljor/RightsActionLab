@@ -8,30 +8,35 @@ const pillars = [
     description:
       "Running educational programs on internet freedom, digital security, and strategies of nonviolent advocacy for Tibetans and other communities facing extreme repression.",
     icon: Users,
+    img: "/outreach.svg",
   },
   {
     title: "Training",
     description:
       "Providing in-depth training in digital security, civil society organizing, strategic advocacy, and techniques of nonviolent action.",
     icon: Shield,
+    img: "/training.svg",
   },
   {
     title: "Research",
     description:
       "Conducting evidence-based research in multiple languages using sound methodologies and secure practices. Our research drives high-impact campaigns.",
     icon: BookOpen,
+    img: "/research2-300x257.png",
   },
   {
     title: "Technology Development",
     description:
       "Developing and distributing software that enables secure, private communications for activists, journalists, and others seeking freedom of expression.",
     icon: Cpu,
+    img: "/development.svg",
   },
   {
     title: "Building Networks",
     description:
       "Building networks between and capacity of communities facing extreme human rights violations.",
     icon: Cpu,
+    img: "/outreach.svg",
   },
 ];
 
@@ -54,7 +59,7 @@ const projects = [
     name: "Convene",
     description:
       "Instant private, ephemeral, and encrypted communication platform in your browser that you can access from anywhere",
-    image: "logo/convene-dark-transparent.png",
+    image: "logo/convene.png",
     href: "https://convene.rightsactionlab.org/",
   },
   {
@@ -142,11 +147,11 @@ const projects = [
               class="group block p-8 bg-[#f5f2ed]/30 border border-[#002147]/10 hover:border-[#c5a059] hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               <div class="mb-7">
-                <div class="w-[190px] h-[64px] flex items-center justify-center">
+                <div class="w-[190px] h-[64px] flex items-center justify-start">
                   <img
                     src={project.image}
                     alt={project.name}
-                    class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    class="w-full h-full object-contain object-left transition-transform duration-300 group-hover:scale-105"
                     referrerpolicy="no-referrer"
                   />
                 </div>
@@ -167,7 +172,7 @@ const projects = [
     </div>
   </section>
   <!-- Mission Statement -->
-  <section class="py-24 px-6 bg-white">
+  <section class="py-24 px-6 bg-[#f5f2ed]">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-3xl md:text-5xl font-serif font-bold text-[#002147] mb-8">
         Rights Action Lab is a nonprofit 501(c)(3) charitable organization
@@ -183,16 +188,23 @@ const projects = [
   </section>
 
   <!-- Pillars -->
-  <section class="py-24 px-6 bg-[#f5f2ed]">
+  <section class="py-24 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
         {
-          pillars.map((pillar) => (
-            <div class="bg-white p-10 classic-border classic-shadow hover:-translate-y-2 transition-transform duration-300 group">
-              <div class="w-16 h-16 flex items-center justify-center mb-8">
-                <pillar.icon size={32} className="text-[#002147]" />
+          pillars.map((pillar, index) => (
+            <div
+              class={`p-5 bg-[#f5f2ed]/30 border border-[#002147]/10 hover:border-[#c5a059] hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group md:col-span-4 flex flex-col items-center text-center ${index === 3 ? "md:col-start-3" : ""}`}
+            >
+              <div class="w-34 h-34 flex items-center justify-center ">
+                <img
+                  src={pillar.img}
+                  alt={pillar.title}
+                  class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  referrerpolicy="no-referrer"
+                />
               </div>
-              <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4">
+              <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4 group-hover:text-[#c5a059] transition-colors">
                 {pillar.title}
               </h3>
               <p class="text-[#002147]/60 text-sm leading-relaxed font-medium">

@@ -99,102 +99,132 @@ const options = [
         </div>
       </div>
 
-      <div class="bg-white p-8 md:p-12 classic-shadow classic-border flex flex-col justify-between">
-        <div>
-          <h3 class="text-2xl font-serif font-bold text-[#002147] mb-8">
-            Choose Your Frequency
-          </h3>
-          
-          <!-- Tab Headers -->
-          <div class="flex border-b border-[#002147]/10 mb-8" role="tablist">
-            <button
-              id="tab-weekly"
-              class="flex-1 text-center pb-4 font-serif font-bold text-lg border-b-2 border-[#002147] text-[#002147] transition-all duration-300 cursor-pointer"
-              role="tab"
-              aria-selected="true"
-              aria-controls="panel-weekly"
-            >
-              Weekly
-            </button>
-            <button
-              id="tab-monthly"
-              class="flex-1 text-center pb-4 font-serif font-bold text-lg border-b-2 border-transparent text-[#002147]/40 hover:text-[#002147]/80 hover:border-[#002147]/20 transition-all duration-300 cursor-pointer"
-              role="tab"
-              aria-selected="false"
-              aria-controls="panel-monthly"
-            >
-              Monthly
-            </button>
-          </div>
+      <div class="bg-white p-8 md:p-12 classic-shadow classic-border">
+        <h3 class="text-2xl font-serif font-bold text-[#002147] mb-8">
+          Choose Your Frequency
+        </h3>
 
-          <!-- Tab Contents -->
-          <div id="panel-weekly" role="tabpanel" aria-labelledby="tab-weekly" class="block min-h-[350px]">
-            <!-- Place weekly donation frame/iframe here -->
-            <div class="w-full h-full min-h-[350px] flex flex-col items-center justify-center border border-dashed border-[#002147]/20 rounded bg-[#f5f2ed]/20 p-6 text-center">
-              <div class="text-[#c5a059] mb-3 animate-pulse">
-                <Heart size={40} />
-              </div>
-              <p class="text-lg font-serif font-bold text-[#002147] mb-1">Weekly Support</p>
-              <p class="text-sm text-[#002147]/60 max-w-sm">
-                Embed your weekly donation form frame here.
-              </p>
-            </div>
-          </div>
+        <!-- Tab Headers -->
+        <div class="flex border-b border-[#002147]/10 mb-8" role="tablist">
+          <button
+            id="tab-onetime"
+            class="flex-1 text-center pb-4 font-serif font-bold text-lg border-b-2 border-[#002147] text-[#002147] transition-all duration-300 cursor-pointer"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-onetime"
+          >
+            One Time
+          </button>
+          <button
+            id="tab-monthly"
+            class="flex-1 text-center pb-4 font-serif font-bold text-lg border-b-2 border-transparent text-[#002147]/40 hover:text-[#002147]/80 hover:border-[#002147]/20 transition-all duration-300 cursor-pointer"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-monthly"
+          >
+            Monthly
+          </button>
+        </div>
 
-          <div id="panel-monthly" role="tabpanel" aria-labelledby="tab-monthly" class="hidden min-h-[350px]">
-            <!-- Place monthly donation frame/iframe here -->
-            <div class="w-full h-full min-h-[350px] flex flex-col items-center justify-center border border-dashed border-[#002147]/20 rounded bg-[#f5f2ed]/20 p-6 text-center">
-              <div class="text-[#c5a059] mb-3 animate-pulse">
-                <Heart size={40} fill="currentColor" />
-              </div>
-              <p class="text-lg font-serif font-bold text-[#002147] mb-1">Monthly Support</p>
-              <p class="text-sm text-[#002147]/60 max-w-sm">
-                Embed your monthly donation form frame here.
-              </p>
-            </div>
+        <!-- Tab Contents -->
+        <div
+          id="panel-onetime"
+          role="tabpanel"
+          aria-labelledby="tab-onetime"
+          class="block min-h-[350px]"
+        >
+          <!-- Place One-time donation frame/iframe here -->
+          <div
+            class="w-full h-full min-h-[350px] flex flex-col items-center justify-center border border-dashed border-[#002147]/20 rounded bg-[#f5f2ed]/20 p-6 text-center"
+          >
+            <iframe
+              onload="window.parent.scrollTo(0,0)"
+              height="1175"
+              allowTransparency="true"
+              allow="payment"
+              frameborder="0"
+              scrolling="no"
+              style="width:100%;border:none"
+              src="https://secure.lglforms.com/form_engine/s/KHomU2Rga7CkMVm4v0ufjw"
+              ><a
+              href="https://secure.lglforms.com/form_engine/s/KHomU2Rga7CkMVm4v0ufjw">Fill
+              out my LGL Form!</a></iframe
+            >
+          </div>
+        </div>
+
+        <div
+          id="panel-monthly"
+          role="tabpanel"
+          aria-labelledby="tab-monthly"
+          class="hidden min-h-[350px]"
+        >
+          <!-- Place monthly donation frame/iframe here -->
+          <div
+            class="w-full h-full min-h-[350px] flex flex-col items-center justify-center border border-dashed border-[#002147]/20 rounded bg-[#f5f2ed]/20 p-6 text-center"
+          >
+            <iframe
+              onload="window.parent.scrollTo(0,0)"
+              height="1175"
+              allowTransparency="true"
+              allow="payment"
+              frameborder="0"
+              scrolling="no"
+              style="width:100%;border:none"
+              src="https://secure.lglforms.com/form_engine/s/5Z_IkJX4sY7XMOJOH2z4BA"
+              ><a
+              href="https://secure.lglforms.com/form_engine/s/5Z_IkJX4sY7XMOJOH2z4BA">Fill
+              out my LGL Form!</a></iframe
+            >
           </div>
         </div>
       </div>
 
       <script>
-        const tabWeekly = document.getElementById('tab-weekly');
-        const tabMonthly = document.getElementById('tab-monthly');
-        const panelWeekly = document.getElementById('panel-weekly');
-        const panelMonthly = document.getElementById('panel-monthly');
+        const tabOnetime = document.getElementById("tab-onetime");
+        const tabMonthly = document.getElementById("tab-monthly");
+        const panelOnetime = document.getElementById("panel-onetime");
+        const panelMonthly = document.getElementById("panel-monthly");
 
-        if (tabWeekly && tabMonthly && panelWeekly && panelMonthly) {
-          tabWeekly.addEventListener('click', () => {
+        if (tabOnetime && tabMonthly && panelOnetime && panelMonthly) {
+          tabOnetime.addEventListener("click", () => {
             // Toggle Active States for Buttons
-            tabWeekly.classList.add('border-[#002147]', 'text-[#002147]');
-            tabWeekly.classList.remove('border-transparent', 'text-[#002147]/40');
-            tabWeekly.setAttribute('aria-selected', 'true');
+            tabOnetime.classList.add("border-[#002147]", "text-[#002147]");
+            tabOnetime.classList.remove(
+              "border-transparent",
+              "text-[#002147]/40",
+            );
+            tabOnetime.setAttribute("aria-selected", "true");
 
-            tabMonthly.classList.remove('border-[#002147]', 'text-[#002147]');
-            tabMonthly.classList.add('border-transparent', 'text-[#002147]/40');
-            tabMonthly.setAttribute('aria-selected', 'false');
+            tabMonthly.classList.remove("border-[#002147]", "text-[#002147]");
+            tabMonthly.classList.add("border-transparent", "text-[#002147]/40");
+            tabMonthly.setAttribute("aria-selected", "false");
 
             // Toggle Panels Visibility
-            panelWeekly.classList.remove('hidden');
-            panelWeekly.classList.add('block');
-            panelMonthly.classList.remove('block');
-            panelMonthly.classList.add('hidden');
+            panelOnetime.classList.remove("hidden");
+            panelOnetime.classList.add("block");
+            panelMonthly.classList.remove("block");
+            panelMonthly.classList.add("hidden");
           });
 
-          tabMonthly.addEventListener('click', () => {
+          tabMonthly.addEventListener("click", () => {
             // Toggle Active States for Buttons
-            tabMonthly.classList.add('border-[#002147]', 'text-[#002147]');
-            tabMonthly.classList.remove('border-transparent', 'text-[#002147]/40');
-            tabMonthly.setAttribute('aria-selected', 'true');
+            tabMonthly.classList.add("border-[#002147]", "text-[#002147]");
+            tabMonthly.classList.remove(
+              "border-transparent",
+              "text-[#002147]/40",
+            );
+            tabMonthly.setAttribute("aria-selected", "true");
 
-            tabWeekly.classList.remove('border-[#002147]', 'text-[#002147]');
-            tabWeekly.classList.add('border-transparent', 'text-[#002147]/40');
-            tabWeekly.setAttribute('aria-selected', 'false');
+            tabOnetime.classList.remove("border-[#002147]", "text-[#002147]");
+            tabOnetime.classList.add("border-transparent", "text-[#002147]/40");
+            tabOnetime.setAttribute("aria-selected", "false");
 
             // Toggle Panels Visibility
-            panelMonthly.classList.remove('hidden');
-            panelMonthly.classList.add('block');
-            panelWeekly.classList.remove('block');
-            panelWeekly.classList.add('hidden');
+            panelMonthly.classList.remove("hidden");
+            panelMonthly.classList.add("block");
+            panelOnetime.classList.remove("block");
+            panelOnetime.classList.add("hidden");
           });
         }
       </script>
