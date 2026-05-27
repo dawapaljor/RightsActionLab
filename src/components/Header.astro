@@ -36,7 +36,7 @@ const navItems = [
 </header>
 
 <!-- Main Nav -->
-<nav class="border-b border-[#002147]/10 px-4 lg:px-6 py-4 lg:py-0">
+<nav class="border-b border-[#002147]/10 px-4 lg:px-6 py-4 lg:py-0 bg-[#c5a059]">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
     <a href="/" class="flex items-center gap-2 lg:gap-4 py-4 lg:py-6">
       <!-- <img
@@ -63,7 +63,7 @@ const navItems = [
           <div class="relative group">
             <a
               href={item.href}
-              class="text-sm font-semibold uppercase tracking-wider text-[#002147] hover:text-[#c5a059] transition-colors flex items-center gap-1"
+              class="text-sm font-semibold uppercase tracking-wider text-[#002147] hover:text-slate-700 transition-colors flex items-center gap-1"
             >
               {item.name}
               {item.children && (
@@ -92,7 +92,7 @@ const navItems = [
       }
       <a
         href="/donate"
-        class="bg-[#002147] text-white px-6 py-3 text-sm font-bold uppercase tracking-widest hover:bg-[#c5a059] transition-all duration-300 shadow-lg"
+        class="bg-[#002147] text-white px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-[#c5a059] transition-all duration-300 shadow-lg"
       >
         Support Our Projects
       </a>
