@@ -4,7 +4,7 @@ import { ArrowRight, Shield, BookOpen, Users, Cpu } from "lucide-react";
 
 const pillars = [
   {
-    title: "Education And Outreach",
+    title: "Education & Outreach",
     description:
       "Running educational programs on internet freedom, digital security, and strategies of nonviolent advocacy for Tibetans and other communities facing extreme repression.",
     icon: Users,
@@ -49,7 +49,7 @@ const projects = [
     href: "https://tibetaction.net",
   },
   {
-    name: "TIBCERT",
+    name: "TibCERT",
     description:
       "Supporting and strengthening community platforms for digital security and incident response.",
     image: "logo/tibcert-logo.svg",
@@ -60,14 +60,21 @@ const projects = [
     description:
       "Instant private, ephemeral, and encrypted communication platform in your browser that you can access from anywhere",
     image: "logo/convene.png",
-    href: "https://convene.rightsactionlab.org/",
+    href: "https://letsconvene.im",
   },
   {
-    name: "Guardian Project",
+    name: "Butterbox",
     description:
-      "Secure communications, information sharing tools and platforms developed through Rights Action Lab.",
-    image: "logo/GuardianProjectLogo.svg",
-    href: "https://guardianproject.info/",
+      "An off-grid, delay-tolerant communication and sharing platform, providing connectivity and services when the internet is not available or not safe.",
+    image: "butter-logo-feature-large.svg",
+    href: "https://likebutter.app/",
+  },
+  {
+    name: "Proofmode",
+    description:
+      "We believe in a future where every camera will have a Proof Mode that can be enabled and every viewer an ability to verify-then-trust what they are seeing.",
+    image: "proofmode-logo.svg",
+    href: "https://proofmode.org/",
   },
 ];
 ---
@@ -105,10 +112,16 @@ const projects = [
           research, advocacy and technology development.
         </p>
         <div class="flex flex-wrap gap-6">
-          <!-- <a href="/about" class="bg-[#c5a059] text-[#002147] px-8 py-4 font-bold uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-xl">
+          <!-- <a
+            href="/about"
+            class="bg-[#c5a059] text-[#002147] px-8 py-4 font-bold uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-xl"
+          >
             Our Mission
           </a>
-          <a href="#our-projects" class="border-2 border-white/30 text-white px-8 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-[#002147] transition-all duration-300">
+          <a
+            href="#our-projects"
+            class="border-2 border-white/30 text-white px-8 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-[#002147] transition-all duration-300"
+          >
             View Projects
           </a> -->
         </div>
@@ -118,33 +131,37 @@ const projects = [
   <!-- Projects Preview -->
   <section class="py-24 px-6 bg-white snap-start" id="our-projects">
     <div class="max-w-7xl mx-auto">
-      <div class="flex justify-between items-end mb-16">
+      <div class="flex justify-center items-end mb-16">
         <div>
-          <h2
-            class="text-3xl md:text-5xl font-serif font-bold text-[#002147] mb-8 text-center"
-          >
-            Rights Action Lab houses mission-aligned projects and fosters
-            collaborations:
-          </h2>
-          <div class="w-24 h-1 bg-[#c5a059] mx-auto mb-12"></div>
-          <h4
-            class="md:text-5xl font-serif font-bold text-[#002147] text-center pt-20 snap-start scroll-mt-6"
+          <div
+            class="text-3xl p-20 md:text-4xl font-serif font-bold text-[#002147] mb-8 text-center bg-[#f5f2ed]"
             id="projects"
           >
+            <h2>
+              Rights Action Lab houses mission-aligned projects and fosters
+              collaborations:
+            </h2>
+            <div class="w-24 h-1 bg-[#c5a059] mx-auto mt-4"></div>
+          </div>
+
+          <h2
+            class="text-xl md:text-3xl font-serif font-bold text-[#002147] text-center pt-5 snap-start scroll-mt-6"
+          >
             Current Projects
-          </h4>
+          </h2>
         </div>
         <!-- <a href="/projects" class="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#002147] hover:text-[#c5a059] transition-colors">
           View All Projects <ArrowRight size={16} />
         </a> -->
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="flex flex-wrap justify-center gap-8">
         {
           projects.map((project) => (
             <a
               href={project.href}
-              class="group block p-8 bg-[#f5f2ed]/30 border border-[#002147]/10 hover:border-[#c5a059] hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              class="group block p-8 bg-[#f5f2ed]/30 border border-[#002147]/10 hover:border-[#c5a059] hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]"
+              target="_blank"
             >
               <div class="mb-7">
                 <div class="w-[190px] h-[64px] flex items-center justify-start">
@@ -172,12 +189,12 @@ const projects = [
     </div>
   </section>
   <!-- Mission Statement -->
-  <section class="py-24 px-6 bg-[#f5f2ed] snap-start">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl md:text-5xl font-serif font-bold text-[#002147] mb-8">
+  <section class="py-24 px-6 bg-[#c5a059] snap-start">
+    <div class="max-w-4xl mx-auto text-center bg-white p-4 py-10 shadow-md">
+      <p class="text-2xl md:text-3xl font-serif font-bold text-[#002147] mb-8">
         Rights Action Lab is a nonprofit 501(c)(3) charitable organization
         dedicated to human rights and digital security.
-      </h2>
+      </p>
       <div class="w-24 h-1 bg-[#c5a059] mx-auto mb-12"></div>
       <p class="text-xl text-[#002147]/70 leading-relaxed font-medium">
         We facilitate linkages and support programs that provide education and
@@ -204,7 +221,7 @@ const projects = [
                   referrerpolicy="no-referrer"
                 />
               </div>
-              <h3 class="text-2xl font-serif font-bold text-[#002147] mb-4 group-hover:text-[#c5a059] transition-colors">
+              <h3 class="text-[32px] leading-[1.15] font-serif font-bold text-[#002147] mb-4 group-hover:text-[#c5a059] transition-colors">
                 {pillar.title}
               </h3>
               <p class="text-[#002147]/60 text-sm leading-relaxed font-medium">
@@ -222,15 +239,19 @@ const projects = [
     class="py-24 px-6 bg-[#002147] text-white relative overflow-hidden snap-start"
   >
     <div
-      class="absolute top-0 right-0 w-1/3 h-full bg-[#c5a059]/10 skew-x-12 translate-x-1/2"
+      class="absolute top-0 right-0 w-1/3 h-full bg-[#c5a059]/80 skew-x-12 translate-x-1/2"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-0 w-1/3 h-full bg-[#4f483a]/80 -skew-x-45 translate-x-1/2"
     >
     </div>
     <div class="max-w-5xl mx-auto text-center relative z-10">
       <h2 class="text-4xl md:text-6xl font-serif font-bold mb-8">
         Support Human Rights & Digital Freedom
       </h2>
-      <p class="text-xl text-white/70 mb-12 max-w-2xl mx-auto font-medium">
-        Your contribution directly supports the development of secure tools and
+      <p class="text-2xl text-white/70 mb-12 max-w-2xl mx-auto font-medium">
+        Your contribution directly houses the development of secure tools and
         strategic training for those on the frontlines of human rights advocacy.
       </p>
       <a
