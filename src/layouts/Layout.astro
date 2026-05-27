@@ -6,13 +6,14 @@ import '../index.css';
 interface Props {
 	title: string;
 	description?: string;
+	isHome?: boolean;
 }
 
-const { title, description = "Rights Action Lab - Training, research and technology to advance human rights." } = Astro.props;
+const { title, description = "Rights Action Lab - Training, research and technology to advance human rights.", isHome = false } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class={isHome ? "scroll-smooth snap-y snap-proximity" : "scroll-smooth"}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
